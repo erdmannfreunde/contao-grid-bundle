@@ -1,8 +1,8 @@
-# Erdmann & Freunde Grid-Erweiterung für Contao
+# Grid-Erweiterung für Contao
 
-Mit dem Bundle kannst du Content-Elemente in Contao an einem 12-spaltigen Grid ausrichten.
+Das `contao-grid-bundle` ist der offizielle Nachfolger der Erweiterung [euf_grid](https://github.com/ErdmannFreunde/euf_grid). 
 
-Wir empfehlen dir, die Erweiterung in Verbindung mit unserem Contao Theme SOLO zu verwenden. Mehr Infos: http://erdmann-freunde.de/themes/solo/
+Mit dem Bundle kannst du Content-Elemente in Contao in einem mehrspaltigen Grid (standardmäßig 12 Spalten) ausrichten. Wir empfehlen dir, die Erweiterung in Verbindung mit unserem Contao Themes zu verwenden. Mehr Infos: https://erdmann-freunde.de/produkte/contao-themes/
 
 ## Was die Erweiterung macht:
 
@@ -10,7 +10,7 @@ Nach der Installation werden den Content-Elementen 2 neue Felder für die Eingab
 
 ## Konfiguration
 
-Das ist die Standardkonfiguration. Du kannst diese (auch nur einzelne Zweige) über die `config.yml` überschreiben. Das ist nützlich, wenn du andere Breakpoints verwendest. Oder wenn eineeinfache Spaltenbreite für dein Layout irrelevant ist, kannst du diese ebenfallst deaktivieren.
+Das ist die Standardkonfiguration. Du kannst diese (auch nur einzelne Zweige) über die `config.yml` überschreiben. Das ist nützlich, wenn du andere Breakpoints verwendest. Oder wenn eine einfache Spaltenbreite für dein Layout irrelevant ist, kannst du diese ebenfalls deaktivieren.
 
 ```yml
 erdmannfreunde_contao_grid:
@@ -69,6 +69,4 @@ erdmannfreunde_contao_grid:
 ```
 
 ## Update-Hinweise
-- Ab Version 3.0 basiert die Grid-Erweiterung auf [CSS Grid Layout](https://developer.mozilla.org/de/docs/Web/CSS/CSS_Grid_Layout). Dadurch ergeben sich ganz neue Möglichkeiten in der Darstellung und Ausrichtung von Inhalten, allerdings ist die Version 3 nur eingeschränkt kompatibel mit der vorherigen Version. Zum Beispiel müssen zusätzliche Abstände, die vorher mit den Offset-Klassen (`.offset-md-1`) erstellt wurden, nun mit der neuen Klasse `.grid-start-[viewport]-[spaltennummer]` erzeugt werden. Ein Update von 2 auf 3 sollte vorab in einer Testumgebung geprüft werden, nicht in einer Live-Umgebung!
-- Ab Version 2.2.3 endet der offizielle Support für Contao 3.5. Dies macht sich unter anderem dadurch bemerkbar, dass sich die mitgelieferte CSS-Datei nicht mehr im Seitenlayout laden lässt.
-- Beim **Update** von 2.0.3 auf Version 2.1.0 wurde die alte Art (zusätzliche Checkbox bei den CSS-Frameworks), das mitgelieferte Grid-CSS einzubinden, entfernt und durch ein neues Feld im Layout unter den Style-Einstellungen ersetzt. Wenn du das CSS über den alten Weg eingebunden hattest, empfehlen wir dir, das CSS **vor** dem Update aus den ausgewählten Frameworks zu entfernen und nach dem Update dieses wieder über das neue Feld hinzuzufügen.
+- `contao-grid-bundle` ist ein Rewrite von euf_grid als Contao-Bundle. Reihen- und Spalten-Einstellungen basieren auf euf_grid Version 3 und sind somit kompatibel. Solltest du die Grid-Erweiterung über die `dcaconfig.php` angepasst haben, solltest du diese Anpassungen wie oben erwähnt über die `config.yml` vornehmen.
