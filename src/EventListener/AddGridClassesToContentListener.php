@@ -31,7 +31,7 @@ final class AddGridClassesToContentListener
         $this->scopeMatcher = $scopeMatcher;
     }
 
-    public function onGetContentElement(ContentModel $contentModel, string $strBuffer, ContentElement $element)
+    public function onGetContentElement(ContentModel $contentModel, string $strBuffer)
     {
         $strClasses = '';
 
