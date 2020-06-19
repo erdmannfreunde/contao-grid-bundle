@@ -5,7 +5,7 @@ declare(strict_types=1);
 /*
  * Contao Grid Bundle for Contao Open Source CMS.
  *
- * @copyright  Copyright (c) 2019, Erdmann & Freunde
+ * @copyright  Copyright (c) 2020, Erdmann & Freunde
  * @author     Erdmann & Freunde <https://erdmann-freunde.de>
  * @license    MIT
  * @link       http://github.com/erdmannfreunde/contao-grid
@@ -13,7 +13,6 @@ declare(strict_types=1);
 
 namespace ErdmannFreunde\ContaoGridBundle\EventListener;
 
-use Contao\ContentElement;
 use Contao\ContentModel;
 use Contao\CoreBundle\Routing\ScopeMatcher;
 use Contao\StringUtil;
@@ -21,7 +20,6 @@ use Symfony\Component\HttpFoundation\RequestStack;
 
 final class AddGridClassesToContentListener
 {
-
     private $requestStack;
     private $scopeMatcher;
 
@@ -68,7 +66,7 @@ final class AddGridClassesToContentListener
                     break;
             }
 
-            if ($this->scopeMatcher->isBackendRequest($this->requestStack->getCurrentRequest())){
+            if ($this->scopeMatcher->isBackendRequest($this->requestStack->getCurrentRequest())) {
                 $strBuffer = '<div class="tl_gray tl_content_right">'.$strClasses.'</div>'.$strBuffer;
             }
         }

@@ -5,7 +5,7 @@ declare(strict_types=1);
 /*
  * Contao Grid Bundle for Contao Open Source CMS.
  *
- * @copyright  Copyright (c) 2019, Erdmann & Freunde
+ * @copyright  Copyright (c) 2020, Erdmann & Freunde
  * @author     Erdmann & Freunde <https://erdmann-freunde.de>
  * @license    MIT
  * @link       http://github.com/erdmannfreunde/contao-grid

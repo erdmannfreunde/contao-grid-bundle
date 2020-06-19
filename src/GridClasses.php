@@ -5,7 +5,7 @@ declare(strict_types=1);
 /*
  * Contao Grid Bundle for Contao Open Source CMS.
  *
- * @copyright  Copyright (c) 2019, Erdmann & Freunde
+ * @copyright  Copyright (c) 2020, Erdmann & Freunde
  * @author     Erdmann & Freunde <https://erdmann-freunde.de>
  * @license    MIT
  * @link       http://github.com/erdmannfreunde/contao-grid
@@ -61,7 +61,7 @@ final class GridClasses
         ?array $directions,
         array $options_columns
     ) {
-        $this->rowClass = $rowClass;
+        $this->rowClass              = $rowClass;
         $this->columns               = $columns;
         $this->columns_no_column     = $columns_no_column;
         $this->viewports             = $viewports;
