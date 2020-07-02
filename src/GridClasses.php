@@ -155,22 +155,28 @@ final class GridClasses
 
         foreach ((array) $this->getOptionsPrefixes() as $prefix) {
             if ($this->isViewportsNoViewport()) {
-                foreach ($this->getColumns() as $column) {
-                    $options[$prefix][] = implode('-', [$prefix, $column]);
+                foreach ($this->getColumns() as $direction) {
+                    $options[$prefix][] = implode('-', [$prefix, $direction]);
                 }
             }
 
             foreach ($this->getViewports() as $viewport) {
-                foreach ($this->getOptionsColumns() as $column) {
-                    $options[$prefix.'-'.$viewport][] = implode('-', [$prefix, $viewport, $column]);
+                foreach ($this->getOptionsColumns() as $direction) {
+                    $options[$prefix.'-'.$viewport][] = implode('-', [$prefix, $viewport, $direction]);
                 }
             }
         }
 
         foreach ((array) $this->getPositioning() as $position) {
+            if ($this->isViewportsNoViewport()) {
+                foreach ($this->getDirections() as $direction) {
+                    $options[$position][] = implode('-', [$position, $direction]);
+                }
+            }
+
             foreach ($this->getViewports() as $viewport) {
-                foreach ((array) $this->getDirections() as $directions) {
-                    $options[$position.'-'.$viewport][] = implode('-', [$position, $viewport, $directions]);
+                foreach ((array) $this->getDirections() as $direction) {
+                    $options[$position.'-'.$viewport][] = implode('-', [$position, $viewport, $direction]);
                 }
             }
         }
