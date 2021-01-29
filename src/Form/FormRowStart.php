@@ -29,7 +29,7 @@ class FormRowStart extends Widget
     {
         $rowClass = System::getContainer()->get(GridClasses::class)->getRowClass();
 
-        $this->Template->rowClass = $rowClass;
+        $this->rowClass = $rowClass;
 
         // Return a wildcard in the back end
         if (TL_MODE === 'BE') {
