@@ -5,7 +5,7 @@ declare(strict_types=1);
 /*
  * Contao Grid Bundle for Contao Open Source CMS.
  *
- * @copyright  Copyright (c) 2020, Erdmann & Freunde
+ * @copyright  Copyright (c) 2021, Erdmann & Freunde
  * @author     Erdmann & Freunde <https://erdmann-freunde.de>
  * @license    MIT
  * @link       http://github.com/erdmannfreunde/contao-grid
@@ -20,9 +20,15 @@ final class Configuration implements ConfigurationInterface
 {
     public function getConfigTreeBuilder(): TreeBuilder
     {
-        $treeBuilder = new TreeBuilder();
+        $treeBuilder = new TreeBuilder('erdmannfreunde_contao_grid');
 
-        $rootNode = $treeBuilder->root('erdmannfreunde_contao_grid');
+        // Keep compatibility with symfony/config < 4.2
+        if (method_exists($treeBuilder, 'getRootNode')) {
+            $rootNode = $treeBuilder->getRootNode();
+        } else {
+            $rootNode = $treeBuilder->root('erdmannfreunde_contao_grid');
+        }
+
         $rootNode
             ->children()
                         ->scalarNode('row_class')
