@@ -37,6 +37,8 @@ final class Content
             ++$data['sorting'];
 
             $newElement = new ContentModel();
+
+            $newElement->tstamp = time();
             $newElement->setRow($data);
             $newElement->save();
         }
