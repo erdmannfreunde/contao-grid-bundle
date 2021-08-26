@@ -37,7 +37,7 @@ class TstampMigration extends AbstractMigration
         }
 
         $result = $this->connection
-            ->executeQuery("SELECT id FROM tl_content WHERE (tstamp='' OR tstamp='0') AND (type='colEnd' OR type='rowEnd')")
+            ->executeQuery("SELECT id FROM tl_content WHERE tstamp = 0 AND (type='colEnd' OR type='rowEnd')")
             ->fetchNumeric()
         ;
 
@@ -47,7 +47,7 @@ class TstampMigration extends AbstractMigration
     public function run(): MigrationResult
     {
         $this->connection->executeQuery(
-                "UPDATE tl_content SET tstamp = :time WHERE (tstamp='' OR tstamp='0') AND (type='colEnd' OR type='rowEnd')",
+                "UPDATE tl_content SET tstamp = :time WHERE tstamp = 0 AND (type='colEnd' OR type='rowEnd')",
                 ['time' => time()]
             )
         ;
