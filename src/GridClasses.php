@@ -133,6 +133,10 @@ final class GridClasses
     {
         $options = [];
         foreach ($this->getColumnPrefixes() as $option) {
+            if ($this->isColumnsNoColumn()) {
+                $options[$option][] = $option;
+            }
+
             if ($this->isViewportsNoViewport()) {
                 foreach ($this->getColumns() as $column) {
                     $options[$option][] = implode('-', [$option, $column]);
