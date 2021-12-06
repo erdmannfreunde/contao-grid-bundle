@@ -17,6 +17,9 @@ services:
     arguments: [ '@ErdmannFreunde\ContaoGridBundle\GridClasses' ]
     public: true
 
+  ErdmannFreunde\ContaoGridBundle\EventListener\DataContainer\TranslatedLabelsListener:
+    public: true
+
   ErdmannFreunde\ContaoGridBundle\Migration\TstampMigration:
     arguments: [ '@database_connection' ]
     tags: [ 'contao.migration' ]

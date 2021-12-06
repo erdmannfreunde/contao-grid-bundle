@@ -14,8 +14,10 @@ use ErdmannFreunde\ContaoGridBundle\EventListener\DataContainer\Content;
 use ErdmannFreunde\ContaoGridBundle\EventListener\DataContainer\GridClassesOptionsListener;
 use ErdmannFreunde\ContaoGridBundle\EventListener\DataContainer\GridColsOptionsListener;
 use ErdmannFreunde\ContaoGridBundle\EventListener\DataContainer\RegisterFieldsInPaletteListener;
+use ErdmannFreunde\ContaoGridBundle\EventListener\DataContainer\TranslatedLabelsListener;
 
 $GLOBALS['TL_DCA']['tl_content']['config']['onload_callback'][] = [RegisterFieldsInPaletteListener::class, 'onLoadContentCallback'];
+$GLOBALS['TL_DCA']['tl_content']['config']['onload_callback'][] = [TranslatedLabelsListener::class, 'onLoadContentCallback'];
 $GLOBALS['TL_DCA']['tl_content']['config']['onsubmit_callback'][] = [Content::class, 'onsubmitCallback'];
 
 $GLOBALS['TL_DCA']['tl_content']['palettes']['rowStart'] = '{type_legend},type;{expert_legend:hide},cssID';
