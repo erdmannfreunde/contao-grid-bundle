@@ -3,12 +3,11 @@
 declare(strict_types=1);
 
 /*
- * Contao Grid Bundle for Contao Open Source CMS.
+ * This file is part of erdmannfreunde/contao-grid-bundle.
  *
- * @copyright  Copyright (c) 2021, Erdmann & Freunde
- * @author     Erdmann & Freunde <https://erdmann-freunde.de>
- * @license    MIT
- * @link       http://github.com/erdmannfreunde/contao-grid
+ * (c) Erdmann & Freunde <https://erdmann-freunde.de>
+ *
+ * @license MIT
  */
 
 $GLOBALS['TL_LANG']['tl_layout']['addEuFGridCss'] = ['Load EuF-grid CSS', 'Add EuF-grid CSS to this layout.'];

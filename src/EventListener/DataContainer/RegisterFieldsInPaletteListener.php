@@ -3,12 +3,11 @@
 declare(strict_types=1);
 
 /*
- * Contao Grid Bundle for Contao Open Source CMS.
+ * This file is part of erdmannfreunde/contao-grid-bundle.
  *
- * @copyright  Copyright (c) 2021, Erdmann & Freunde
- * @author     Erdmann & Freunde <https://erdmann-freunde.de>
- * @license    MIT
- * @link       http://github.com/erdmannfreunde/contao-grid
+ * (c) Erdmann & Freunde <https://erdmann-freunde.de>
+ *
+ * @license MIT
  */
 
 namespace ErdmannFreunde\ContaoGridBundle\EventListener\DataContainer;
@@ -33,8 +32,10 @@ final class RegisterFieldsInPaletteListener
     public function onLoadFormFieldCallback(DataContainer $dataContainer): void
     {
         foreach ($GLOBALS['TL_DCA']['tl_form_field']['palettes'] as $k => $palette) {
-            if (!\is_array($palette) && false !== strpos($palette, 'customTpl')
-                && (!\in_array($k, ['html', 'fieldsetfsStop', 'rowStart'], true))) {
+            if (
+                !\is_array($palette) && false !== strpos($palette, 'customTpl')
+                && (!\in_array($k, ['html', 'fieldsetfsStop', 'rowStart'], true))
+            ) {
                 $GLOBALS['TL_DCA']['tl_form_field']['palettes'][$k] = str_replace(
                     '{template_legend:hide}',
                     '{grid_legend},grid_columns,grid_options;{template_legend:hide}',

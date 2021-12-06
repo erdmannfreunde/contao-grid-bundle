@@ -3,12 +3,11 @@
 declare(strict_types=1);
 
 /*
- * Contao Grid Bundle for Contao Open Source CMS.
+ * This file is part of erdmannfreunde/contao-grid-bundle.
  *
- * @copyright  Copyright (c) 2021, Erdmann & Freunde
- * @author     Erdmann & Freunde <https://erdmann-freunde.de>
- * @license    MIT
- * @link       http://github.com/erdmannfreunde/contao-grid
+ * (c) Erdmann & Freunde <https://erdmann-freunde.de>
+ *
+ * @license MIT
  */
 
 namespace ErdmannFreunde\ContaoGridBundle\ContentElement;
@@ -20,14 +19,14 @@ class ContentColStart extends ContentElement
 {
     protected $strTemplate = 'ce_colStart';
 
-    public function compile()
+    public function compile(): void
     {
     }
 
     public function generate()
     {
         if (TL_MODE === 'BE') {
-            $this->Template           = new BackendTemplate('be_wildcard');
+            $this->Template = new BackendTemplate('be_wildcard');
             $this->Template->wildcard = '### E&F GRID: Spalte Start ###';
 
             return $this->Template->parse();

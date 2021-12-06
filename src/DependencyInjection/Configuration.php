@@ -3,12 +3,11 @@
 declare(strict_types=1);
 
 /*
- * Contao Grid Bundle for Contao Open Source CMS.
+ * This file is part of erdmannfreunde/contao-grid-bundle.
  *
- * @copyright  Copyright (c) 2021, Erdmann & Freunde
- * @author     Erdmann & Freunde <https://erdmann-freunde.de>
- * @license    MIT
- * @link       http://github.com/erdmannfreunde/contao-grid
+ * (c) Erdmann & Freunde <https://erdmann-freunde.de>
+ *
+ * @license MIT
  */
 
 namespace ErdmannFreunde\ContaoGridBundle\DependencyInjection;
@@ -31,47 +30,47 @@ final class Configuration implements ConfigurationInterface
 
         $rootNode
             ->children()
-                        ->scalarNode('row_class')
-                            ->defaultValue('row')
-                        ->end()
-                        ->arrayNode('columns')
-                            ->integerPrototype()->end()
-                            ->defaultValue(range(1, 12))
-                        ->end()
-                        ->booleanNode('columns_no_column')
-                            ->defaultTrue()
-                        ->end()
-                        ->arrayNode('viewports')
-                            ->scalarPrototype()->end()
-                            ->defaultValue(['xs', 'sm', 'md', 'lg', 'xl'])
-                        ->end()
-                        ->booleanNode('viewports_no_viewport')
-                            ->defaultTrue()
-                        ->end()
-                        ->arrayNode('column_prefixes')
-                            ->scalarPrototype()->end()
-                            ->defaultValue(['col', 'row-span'])
-                        ->end()
-                        ->arrayNode('options_prefixes')
-                            ->scalarPrototype()->end()
-                            ->defaultValue(['col-start', 'row-start'])
-                        ->end()
-                        ->arrayNode('pulls')
-                            ->scalarPrototype()->end()
-                            ->defaultValue(['pull-left', 'pull-right'])
-                        ->end()
-                        ->arrayNode('positioning')
-                            ->scalarPrototype()->end()
-                            ->defaultValue(['align', 'justify'])
-                        ->end()
-                        ->arrayNode('directions')
-                            ->scalarPrototype()->end()
-                            ->defaultValue(['start', 'center', 'end', 'stretch'])
-                        ->end()
-                        ->arrayNode('options_columns')
-                            ->integerPrototype()->end()
-                            ->defaultValue(range(1, 12))
-                        ->end()
+                ->scalarNode('row_class')
+                    ->defaultValue('row')
+                ->end()
+                ->arrayNode('columns')
+                    ->integerPrototype()->end()
+                    ->defaultValue(range(1, 12))
+                ->end()
+                ->booleanNode('columns_no_column')
+                    ->defaultTrue()
+                ->end()
+                ->arrayNode('viewports')
+                    ->scalarPrototype()->end()
+                    ->defaultValue(['xs', 'sm', 'md', 'lg', 'xl'])
+                ->end()
+                ->booleanNode('viewports_no_viewport')
+                    ->defaultTrue()
+                ->end()
+                ->arrayNode('column_prefixes')
+                    ->scalarPrototype()->end()
+                    ->defaultValue(['col', 'row-span'])
+                ->end()
+                ->arrayNode('options_prefixes')
+                    ->scalarPrototype()->end()
+                    ->defaultValue(['col-start', 'row-start'])
+                ->end()
+                ->arrayNode('pulls')
+                    ->scalarPrototype()->end()
+                    ->defaultValue(['pull-left', 'pull-right'])
+                ->end()
+                ->arrayNode('positioning')
+                    ->scalarPrototype()->end()
+                    ->defaultValue(['align', 'justify'])
+                ->end()
+                ->arrayNode('directions')
+                    ->scalarPrototype()->end()
+                    ->defaultValue(['start', 'center', 'end', 'stretch'])
+                ->end()
+                ->arrayNode('options_columns')
+                    ->integerPrototype()->end()
+                    ->defaultValue(range(1, 12))
+                ->end()
             ->end()
         ;
 

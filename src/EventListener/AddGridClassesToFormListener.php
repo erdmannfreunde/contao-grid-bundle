@@ -3,12 +3,11 @@
 declare(strict_types=1);
 
 /*
- * Contao Grid Bundle for Contao Open Source CMS.
+ * This file is part of erdmannfreunde/contao-grid-bundle.
  *
- * @copyright  Copyright (c) 2021, Erdmann & Freunde
- * @author     Erdmann & Freunde <https://erdmann-freunde.de>
- * @license    MIT
- * @link       http://github.com/erdmannfreunde/contao-grid
+ * (c) Erdmann & Freunde <https://erdmann-freunde.de>
+ *
+ * @license MIT
  */
 
 namespace ErdmannFreunde\ContaoGridBundle\EventListener;
@@ -29,6 +28,7 @@ final class AddGridClassesToFormListener
         if (!\in_array($objWidget->type, $arrWrongFields, true) && (isset($objWidget->grid_columns) || isset($objWidget->grid_options))) {
             if ($objWidget->grid_columns) {
                 $arrGridClasses = StringUtil::deserialize($objWidget->grid_columns);
+
                 foreach ($arrGridClasses as $class) {
                     $strClasses .= $class.' ';
                 }
@@ -37,6 +37,7 @@ final class AddGridClassesToFormListener
             // Weitere Optionen Klassen auslesen und in String speichern
             if ($objWidget->grid_options) {
                 $arrGridClasses = StringUtil::deserialize($objWidget->grid_options);
+
                 foreach ($arrGridClasses as $class) {
                     $strClasses .= $class.' ';
                 }

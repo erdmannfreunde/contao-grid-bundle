@@ -3,75 +3,85 @@
 declare(strict_types=1);
 
 /*
- * Contao Grid Bundle for Contao Open Source CMS.
+ * This file is part of erdmannfreunde/contao-grid-bundle.
  *
- * @copyright  Copyright (c) 2021, Erdmann & Freunde
- * @author     Erdmann & Freunde <https://erdmann-freunde.de>
- * @license    MIT
- * @link       http://github.com/erdmannfreunde/contao-grid
+ * (c) Erdmann & Freunde <https://erdmann-freunde.de>
+ *
+ * @license MIT
  */
 
 namespace ErdmannFreunde\ContaoGridBundle;
 
 final class GridClasses
 {
-    /** @var string */
+    /**
+     * @var string
+     */
     private $rowClass;
 
-    /** @var int[] */
+    /**
+     * @var array<int>
+     */
     private $columns;
 
-    /** @var bool */
+    /**
+     * @var bool
+     */
     private $columns_no_column;
 
-    /** @var string[] */
+    /**
+     * @var array<string>
+     */
     private $viewports;
 
-    /** @var bool */
+    /**
+     * @var bool
+     */
     private $viewports_no_viewport;
 
-    /** @var string[] */
+    /**
+     * @var array<string>
+     */
     private $column_prefixes;
 
-    /** @var string[] */
+    /**
+     * @var array<string>
+     */
     private $options_prefixes;
 
-    /** @var string[] */
+    /**
+     * @var array<string>
+     */
     private $pulls;
 
-    /** @var string[] */
+    /**
+     * @var array<string>
+     */
     private $positioning;
 
-    /** @var string[] */
+    /**
+     * @var array<string>
+     */
     private $directions;
 
-    /** @var int[] */
+    /**
+     * @var array<int>
+     */
     private $options_columns;
 
-    public function __construct(
-        string $rowClass,
-        array $columns,
-        bool $columns_no_column,
-        array $viewports,
-        bool $viewports_no_viewport,
-        array $column_prefixes,
-        ?array $options_prefixes,
-        ?array $pulls,
-        ?array $positioning,
-        ?array $directions,
-        array $options_columns
-    ) {
-        $this->rowClass              = $rowClass;
-        $this->columns               = $columns;
-        $this->columns_no_column     = $columns_no_column;
-        $this->viewports             = $viewports;
+    public function __construct(string $rowClass, array $columns, bool $columns_no_column, array $viewports, bool $viewports_no_viewport, array $column_prefixes, ?array $options_prefixes, ?array $pulls, ?array $positioning, ?array $directions, array $options_columns)
+    {
+        $this->rowClass = $rowClass;
+        $this->columns = $columns;
+        $this->columns_no_column = $columns_no_column;
+        $this->viewports = $viewports;
         $this->viewports_no_viewport = $viewports_no_viewport;
-        $this->column_prefixes       = $column_prefixes;
-        $this->options_prefixes      = $options_prefixes;
-        $this->pulls                 = $pulls;
-        $this->positioning           = $positioning;
-        $this->directions            = $directions;
-        $this->options_columns       = $options_columns;
+        $this->column_prefixes = $column_prefixes;
+        $this->options_prefixes = $options_prefixes;
+        $this->pulls = $pulls;
+        $this->positioning = $positioning;
+        $this->directions = $directions;
+        $this->options_columns = $options_columns;
     }
 
     public function getRowClass(): string
@@ -132,6 +142,7 @@ final class GridClasses
     public function getGridColumnOptions(): array
     {
         $options = [];
+
         foreach ($this->getColumnPrefixes() as $option) {
             if ($this->isColumnsNoColumn()) {
                 $options[$option][] = $option;

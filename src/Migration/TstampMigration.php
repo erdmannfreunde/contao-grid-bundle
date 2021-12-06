@@ -3,12 +3,11 @@
 declare(strict_types=1);
 
 /*
- * Contao Grid Bundle for Contao Open Source CMS.
+ * This file is part of erdmannfreunde/contao-grid-bundle.
  *
- * @copyright  Copyright (c) 2021, Erdmann & Freunde
- * @author     Erdmann & Freunde <https://erdmann-freunde.de>
- * @license    MIT
- * @link       http://github.com/erdmannfreunde/contao-grid
+ * (c) Erdmann & Freunde <https://erdmann-freunde.de>
+ *
+ * @license MIT
  */
 
 namespace ErdmannFreunde\ContaoGridBundle\Migration;
@@ -32,6 +31,7 @@ class TstampMigration extends AbstractMigration
     public function shouldRun(): bool
     {
         $schemaManager = $this->connection->getSchemaManager();
+
         if (!$schemaManager->tablesExist(['tl_content'])) {
             return false;
         }
@@ -47,9 +47,9 @@ class TstampMigration extends AbstractMigration
     public function run(): MigrationResult
     {
         $this->connection->executeQuery(
-                "UPDATE tl_content SET tstamp = :time WHERE tstamp = 0 AND (type='colEnd' OR type='rowEnd')",
-                ['time' => time()]
-            )
+            "UPDATE tl_content SET tstamp = :time WHERE tstamp = 0 AND (type='colEnd' OR type='rowEnd')",
+            ['time' => time()]
+        )
         ;
 
         return $this->createResult(

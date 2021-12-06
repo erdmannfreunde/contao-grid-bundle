@@ -3,12 +3,11 @@
 declare(strict_types=1);
 
 /*
- * Contao Grid Bundle for Contao Open Source CMS.
+ * This file is part of erdmannfreunde/contao-grid-bundle.
  *
- * @copyright  Copyright (c) 2021, Erdmann & Freunde
- * @author     Erdmann & Freunde <https://erdmann-freunde.de>
- * @license    MIT
- * @link       http://github.com/erdmannfreunde/contao-grid
+ * (c) Erdmann & Freunde <https://erdmann-freunde.de>
+ *
+ * @license MIT
  */
 
 namespace ErdmannFreunde\ContaoGridBundle\EventListener;
@@ -36,10 +35,13 @@ final class AddGridClassesToContentListener
         // Bei diesen ContentElementen soll nichts verändert werden
         $arrWrongCE = ['rowStart', 'rowEnd', 'colEnd'];
 
-        if (!\in_array($contentModel->type, $arrWrongCE, true)
-            && (isset($contentModel->grid_columns) || isset($contentModel->grid_options))) {
+        if (
+            !\in_array($contentModel->type, $arrWrongCE, true)
+            && (isset($contentModel->grid_columns) || isset($contentModel->grid_options))
+        ) {
             if ($contentModel->grid_columns) {
                 $arrGridClasses = StringUtil::deserialize($contentModel->grid_columns);
+
                 foreach ($arrGridClasses as $class) {
                     $strClasses .= $class.' ';
                 }
@@ -47,6 +49,7 @@ final class AddGridClassesToContentListener
 
             if ($contentModel->grid_options) {
                 $arrGridClasses = StringUtil::deserialize($contentModel->grid_options);
+
                 foreach ($arrGridClasses as $class) {
                     $strClasses .= $class.' ';
                 }
@@ -58,9 +61,11 @@ final class AddGridClassesToContentListener
                 case 'colEnd':
                     // code...
                     break;
+
                 case 'colStart':
                     $strBuffer = str_replace('ce_colStart', 'ce_colStart '.$strClasses, $strBuffer);
                     break;
+
                 default:
                     $strBuffer = '<div class="'.$strClasses.'">'.$strBuffer.'</div>';
                     break;
