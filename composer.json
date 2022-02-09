@@ -38,9 +38,6 @@
       "ErdmannFreunde\\ContaoGridBundle\\": "src"
     }
   },
-  "replace": {
-    "erdmannfreunde/contao-grid-bundle": "self.version"
-  },
   "extra": {
     "contao-manager-plugin": "ErdmannFreunde\\ContaoGridBundle\\ContaoManager\\Plugin"
   }
