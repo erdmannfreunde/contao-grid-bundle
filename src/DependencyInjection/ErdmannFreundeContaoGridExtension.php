@@ -33,12 +33,22 @@ final class ErdmannFreundeContaoGridExtension extends Extension
 
         $loader->load('services.yml');
 
-        $translatedValues = (bool) array_shift($config);
-
         $definition = $container->getDefinition(TranslatedLabelsListener::class);
-        $definition->setArgument(0, $translatedValues);
+        $definition->setArgument(0, $config['translated_labels']);
 
         $definition = $container->getDefinition(GridClasses::class);
-        $definition->setArguments(array_values($config));
+        $definition->setArguments([
+            $config['row_class'],
+            $config['columns'],
+            $config['columns_no_column'],
+            $config['viewports'],
+            $config['viewports_no_viewport'],
+            $config['column_prefixes'],
+            $config['options_prefixes'],
+            $config['pulls'],
+            $config['positioning'],
+            $config['directions'],
+            $config['options_columns'],
+        ]);
     }
 }
