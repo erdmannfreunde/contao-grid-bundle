@@ -3,12 +3,11 @@
 declare(strict_types=1);
 
 /*
- * Contao Grid Bundle for Contao Open Source CMS.
+ * This file is part of erdmannfreunde/contao-grid-bundle.
  *
- * @copyright  Copyright (c) 2020, Erdmann & Freunde
- * @author     Erdmann & Freunde <https://erdmann-freunde.de>
- * @license    MIT
- * @link       http://github.com/erdmannfreunde/contao-grid
+ * (c) Erdmann & Freunde <https://erdmann-freunde.de>
+ *
+ * @license MIT
  */
 
 use ErdmannFreunde\ContaoGridBundle\ContentElement\ContentColEnd;
@@ -24,22 +23,22 @@ use ErdmannFreunde\ContaoGridBundle\Form\FormRowEnd;
 use ErdmannFreunde\ContaoGridBundle\Form\FormRowStart;
 
 $GLOBALS['TL_CTE']['euf_grid'] = [
-    'rowStart'  => ContentRowStart::class,
-    'rowEnd'    => ContentRowEnd::class,
-    'colStart'  => ContentColStart::class,
-    'colEnd'    => ContentColEnd::class,
+    'rowStart' => ContentRowStart::class,
+    'rowEnd' => ContentRowEnd::class,
+    'colStart' => ContentColStart::class,
+    'colEnd' => ContentColEnd::class,
 ];
 
 $GLOBALS['TL_FFL']['rowStart'] = FormRowStart::class;
-$GLOBALS['TL_FFL']['rowEnd']   = FormRowEnd::class;
+$GLOBALS['TL_FFL']['rowEnd'] = FormRowEnd::class;
 $GLOBALS['TL_FFL']['colStart'] = FormColStart::class;
-$GLOBALS['TL_FFL']['colEnd']   = FormColEnd::class;
+$GLOBALS['TL_FFL']['colEnd'] = FormColEnd::class;
 
 $GLOBALS['TL_WRAPPERS']['start'][] = 'rowStart';
-$GLOBALS['TL_WRAPPERS']['stop'][]  = 'rowEnd';
+$GLOBALS['TL_WRAPPERS']['stop'][] = 'rowEnd';
 $GLOBALS['TL_WRAPPERS']['start'][] = 'colStart';
-$GLOBALS['TL_WRAPPERS']['stop'][]  = 'colEnd';
+$GLOBALS['TL_WRAPPERS']['stop'][] = 'colEnd';
 
 $GLOBALS['TL_HOOKS']['getContentElement'][] = [AddGridClassesToContentListener::class, 'onGetContentElement'];
-$GLOBALS['TL_HOOKS']['loadFormField'][]     = [AddGridClassesToFormListener::class, 'onLoadFormField'];
-$GLOBALS['TL_HOOKS']['getPageLayout'][]     = [IncludeCssListener::class, 'onGetPageLayout'];
+$GLOBALS['TL_HOOKS']['loadFormField'][] = [AddGridClassesToFormListener::class, 'onLoadFormField'];
+$GLOBALS['TL_HOOKS']['getPageLayout'][] = [IncludeCssListener::class, 'onGetPageLayout'];

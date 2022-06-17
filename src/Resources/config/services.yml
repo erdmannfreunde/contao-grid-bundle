@@ -3,16 +3,23 @@ services:
     public: true
 
   ErdmannFreunde\ContaoGridBundle\EventListener\AddGridClassesToContentListener:
-    arguments: ['@request_stack', '@contao.routing.scope_matcher']
+    arguments: [ '@request_stack', '@contao.routing.scope_matcher' ]
     public: true
 
   ErdmannFreunde\ContaoGridBundle\EventListener\DataContainer\GridClassesOptionsListener:
-    arguments: ['@ErdmannFreunde\ContaoGridBundle\GridClasses']
+    arguments: [ '@ErdmannFreunde\ContaoGridBundle\GridClasses' ]
     public: true
 
   ErdmannFreunde\ContaoGridBundle\EventListener\DataContainer\RegisterFieldsInPaletteListener:
     public: true
 
   ErdmannFreunde\ContaoGridBundle\EventListener\DataContainer\GridColsOptionsListener:
-    arguments: ['@ErdmannFreunde\ContaoGridBundle\GridClasses']
+    arguments: [ '@ErdmannFreunde\ContaoGridBundle\GridClasses' ]
     public: true
+
+  ErdmannFreunde\ContaoGridBundle\EventListener\DataContainer\TranslatedLabelsListener:
+    public: true
+
+  ErdmannFreunde\ContaoGridBundle\Migration\TstampMigration:
+    arguments: [ '@database_connection' ]
+    tags: [ 'contao.migration' ]

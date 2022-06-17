@@ -3,32 +3,32 @@
 declare(strict_types=1);
 
 /*
- * Contao Grid Bundle for Contao Open Source CMS.
+ * This file is part of erdmannfreunde/contao-grid-bundle.
  *
- * @copyright  Copyright (c) 2020, Erdmann & Freunde
- * @author     Erdmann & Freunde <https://erdmann-freunde.de>
- * @license    MIT
- * @link       http://github.com/erdmannfreunde/contao-grid
+ * (c) Erdmann & Freunde <https://erdmann-freunde.de>
+ *
+ * @license MIT
  */
 
 namespace ErdmannFreunde\ContaoGridBundle\Form;
 
+use Contao\BackendTemplate;
 use Contao\Widget;
 
 class FormColStart extends Widget
 {
     protected $strTemplate = 'form_colStart';
 
-    public function validate()
+    public function validate(): void
     {
     }
 
-    public function parse($arrAttributes=null)
+    public function parse($arrAttributes = null)
     {
         // Return a wildcard in the back end
         if (TL_MODE === 'BE') {
-            /** @var \BackendTemplate|object $objTemplate */
-            $objTemplate = new \BackendTemplate('be_wildcard');
+            /** @var BackendTemplate|object $objTemplate */
+            $objTemplate = new BackendTemplate('be_wildcard');
 
             $objTemplate->wildcard = '### '.$GLOBALS['TL_LANG']['FFL']['colStart'][0].' ###';
 
