@@ -4,7 +4,7 @@ html {
 }
 .row {
   display: grid;
-  grid-template-columns: repeat(var(--grid__columns), 1fr);
+  grid-template-columns: repeat(var(--grid__columns), minmax(0, 1fr));
   grid-gap: var(--grid__gutter);
   grid-auto-columns: 1fr;
 }
@@ -32,7 +32,6 @@ html {
 /* ----- */
 .col-xs-1, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9, .col-xs-10, .col-xs-11, .col-xs-12, .col-sm-1, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-10, .col-sm-11, .col-sm-12, .col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-10, .col-md-11, .col-md-12, .col-lg-1, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-lg-10, .col-lg-11, .col-lg-12, .col-xl-1, .col-xl-2, .col-xl-3, .col-xl-4, .col-xl-5, .col-xl-6, .col-xl-7, .col-xl-8, .col-xl-9, .col-xl-10, .col-xl-11, .col-xl-12 {
   grid-column: 1 / -1;
-  max-width: 100%;
 }
 
 .row-span-xs-1, .row-span-xs-2, .row-span-xs-3, .row-span-xs-4, .row-span-xs-5, .row-span-xs-6, .row-span-xs-7, .row-span-xs-8, .row-span-xs-9, .row-span-xs-10, .row-span-xs-11, .row-span-xs-12, .row-span-sm-1, .row-span-sm-2, .row-span-sm-3, .row-span-sm-4, .row-span-sm-5, .row-span-sm-6, .row-span-sm-7, .row-span-sm-8, .row-span-sm-9, .row-span-sm-10, .row-span-sm-11, .row-span-sm-12, .row-span-md-1, .row-span-md-2, .row-span-md-3, .row-span-md-4, .row-span-md-5, .row-span-md-6, .row-span-md-7, .row-span-md-8, .row-span-md-9, .row-span-md-10, .row-span-md-11, .row-span-md-12, .row-span-lg-1, .row-span-lg-2, .row-span-lg-3, .row-span-lg-4, .row-span-lg-5, .row-span-lg-6, .row-span-lg-7, .row-span-lg-8, .row-span-lg-9, .row-span-lg-10, .row-span-lg-11, .row-span-lg-12, .row-span-xl-1, .row-span-xl-2, .row-span-xl-3, .row-span-xl-4, .row-span-xl-5, .row-span-xl-6, .row-span-xl-7, .row-span-xl-8, .row-span-xl-9, .row-span-xl-10, .row-span-xl-11, .row-span-xl-12 {
