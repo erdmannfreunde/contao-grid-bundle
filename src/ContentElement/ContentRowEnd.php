@@ -14,6 +14,8 @@ namespace ErdmannFreunde\ContaoGridBundle\ContentElement;
 
 use Contao\BackendTemplate;
 use Contao\ContentElement;
+use Contao\System;
+use Symfony\Component\HttpFoundation\Request;
 
 class ContentRowEnd extends ContentElement
 {
@@ -25,8 +27,10 @@ class ContentRowEnd extends ContentElement
 
     public function generate()
     {
-        if (TL_MODE === 'BE') {
-            $this->Template = new BackendTemplate('be_wildcard');
+    $request = System::getContainer()->get('request_stack')->getCurrentRequest();
+
+    if ($request && System::getContainer()->get('contao.routing.scope_matcher')->isBackendRequest($request)) {
+        $this->Template = new BackendTemplate('be_wildcard');
             $this->Template->wildcard = '### E&F GRID: Reihe Ende ###';
 
             return $this->Template->parse();

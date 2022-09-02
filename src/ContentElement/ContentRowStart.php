@@ -15,6 +15,7 @@ namespace ErdmannFreunde\ContaoGridBundle\ContentElement;
 use Contao\BackendTemplate;
 use Contao\ContentElement;
 use Contao\System;
+use Symfony\Component\HttpFoundation\Request;
 use ErdmannFreunde\ContaoGridBundle\GridClasses;
 
 class ContentRowStart extends ContentElement
@@ -27,7 +28,9 @@ class ContentRowStart extends ContentElement
 
         $this->Template->rowClass = $rowClass;
 
-        if (TL_MODE === 'BE') {
+        $request = System::getContainer()->get('request_stack')->getCurrentRequest();
+
+        if ($request && System::getContainer()->get('contao.routing.scope_matcher')->isBackendRequest($request)) {
             $strCustomClasses = '';
 
             if ($this->cssID[1]) {
