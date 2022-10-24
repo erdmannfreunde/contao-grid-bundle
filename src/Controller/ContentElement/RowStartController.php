@@ -17,8 +17,6 @@ use Contao\ContentModel;
 use Contao\CoreBundle\Controller\ContentElement\AbstractContentElementController;
 use Contao\CoreBundle\ServiceAnnotation\ContentElement;
 use Contao\CoreBundle\Twig\FragmentTemplate;
-use Contao\System;
-use Contao\Template;
 use Symfony\Component\HttpFoundation\Request;
 use ErdmannFreunde\ContaoGridBundle\GridClasses;
 use Symfony\Component\HttpFoundation\Response;
@@ -28,14 +26,11 @@ use Symfony\Component\HttpFoundation\Response;
  */
 class RowStartController extends AbstractContentElementController
 {
-    private $gridClasses;
-
-    public function __construct(GridClasses $gridClasses)
+    public function __construct(private readonly GridClasses $gridClasses)
     {
-        $this->gridClasses = $gridClasses;
     }
 
-    protected function getResponse(Template $template, ContentModel $model, Request $request): Response
+    protected function getResponse(FragmentTemplate $template, ContentModel $model, Request $request): Response
     {
         $rowClass = $this->gridClasses->getRowClass();
 

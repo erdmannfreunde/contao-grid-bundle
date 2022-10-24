@@ -20,13 +20,7 @@ final class Configuration implements ConfigurationInterface
     public function getConfigTreeBuilder(): TreeBuilder
     {
         $treeBuilder = new TreeBuilder('erdmannfreunde_contao_grid');
-
-        // Keep compatibility with symfony/config < 4.2
-        if (method_exists($treeBuilder, 'getRootNode')) {
-            $rootNode = $treeBuilder->getRootNode();
-        } else {
-            $rootNode = $treeBuilder->root('erdmannfreunde_contao_grid');
-        }
+        $rootNode = $treeBuilder->getRootNode();
 
         $rootNode
             ->children()
