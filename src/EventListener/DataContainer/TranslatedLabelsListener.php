@@ -19,11 +19,9 @@ use Contao\CoreBundle\ServiceAnnotation\Callback;
  */
 final class TranslatedLabelsListener
 {
-    private $translatedLabels;
 
-    public function __construct(bool $translatedLabels = false)
+    public function __construct(private readonly bool $translatedLabels = false)
     {
-        $this->translatedLabels = $translatedLabels;
     }
 
     public function __invoke(): void

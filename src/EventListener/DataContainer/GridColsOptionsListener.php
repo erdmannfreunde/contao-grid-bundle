@@ -21,11 +21,9 @@ use ErdmannFreunde\ContaoGridBundle\GridClasses;
  */
 final class GridColsOptionsListener
 {
-    private $gridClasses;
 
-    public function __construct(GridClasses $gridClasses)
+    public function __construct(private readonly GridClasses $gridClasses)
     {
-        $this->gridClasses = $gridClasses;
     }
 
     public function __invoke(): array

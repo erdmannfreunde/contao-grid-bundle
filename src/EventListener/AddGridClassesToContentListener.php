@@ -23,13 +23,9 @@ use Symfony\Component\HttpFoundation\RequestStack;
  */
 final class AddGridClassesToContentListener
 {
-    private $requestStack;
-    private $scopeMatcher;
 
-    public function __construct(RequestStack $requestStack, ScopeMatcher $scopeMatcher)
+    public function __construct(private readonly RequestStack $requestStack, private readonly ScopeMatcher $scopeMatcher)
     {
-        $this->requestStack = $requestStack;
-        $this->scopeMatcher = $scopeMatcher;
     }
 
     public function __invoke(ContentModel $contentModel, string $strBuffer)
