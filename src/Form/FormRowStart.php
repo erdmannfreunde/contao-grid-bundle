@@ -15,6 +15,7 @@ namespace ErdmannFreunde\ContaoGridBundle\Form;
 use Contao\BackendTemplate;
 use Contao\System;
 use Contao\Widget;
+use Symfony\Component\HttpFoundation\Request;
 use ErdmannFreunde\ContaoGridBundle\GridClasses;
 
 class FormRowStart extends Widget
@@ -32,7 +33,9 @@ class FormRowStart extends Widget
         $this->rowClass = $rowClass;
 
         // Return a wildcard in the back end
-        if (TL_MODE === 'BE') {
+        $request = System::getContainer()->get('request_stack')->getCurrentRequest();
+
+        if ($request && System::getContainer()->get('contao.routing.scope_matcher')->isBackendRequest($request)) {
             $strCustomClasses = '';
 
             if ($this->strClass) {

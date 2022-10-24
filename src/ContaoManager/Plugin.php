@@ -24,11 +24,7 @@ final class Plugin implements BundlePluginInterface
     {
         return [
             BundleConfig::create(ErdmannFreundeContaoGridBundle::class)
-                ->setLoadAfter(
-                    [
-                        ContaoCoreBundle::class,
-                    ]
-                ),
+                ->setLoadAfter([ContaoCoreBundle::class]),
         ];
     }
 }

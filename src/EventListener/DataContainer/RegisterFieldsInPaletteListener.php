@@ -12,11 +12,15 @@ declare(strict_types=1);
 
 namespace ErdmannFreunde\ContaoGridBundle\EventListener\DataContainer;
 
+use Contao\CoreBundle\ServiceAnnotation\Callback;
 use Contao\DataContainer;
 
 final class RegisterFieldsInPaletteListener
 {
-    public function onLoadContentCallback(DataContainer $dataContainer): void
+    /**
+     * @Callback(table="tl_content", target="config.onload")
+     */
+    public function onLoadContentCallback(): void
     {
         foreach ($GLOBALS['TL_DCA']['tl_content']['palettes'] as $k => $palette) {
             if (!\is_array($palette) && false !== strpos($palette, 'cssID')) {
@@ -29,7 +33,10 @@ final class RegisterFieldsInPaletteListener
         }
     }
 
-    public function onLoadFormFieldCallback(DataContainer $dataContainer): void
+    /**
+     * @Callback(table="tl_form_field", target="config.onload")
+     */
+    public function onLoadFormFieldCallback(): void
     {
         foreach ($GLOBALS['TL_DCA']['tl_form_field']['palettes'] as $k => $palette) {
             if (

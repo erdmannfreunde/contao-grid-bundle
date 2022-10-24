@@ -12,8 +12,13 @@ declare(strict_types=1);
 
 namespace ErdmannFreunde\ContaoGridBundle\EventListener\DataContainer;
 
+use Contao\CoreBundle\ServiceAnnotation\Callback;
 use ErdmannFreunde\ContaoGridBundle\GridClasses;
 
+/**
+ * @Callback(table="tl_content", target="fields.grid_options.options")
+ * @Callback(table="tl_form_field", target="fields.grid_options.options")
+ */
 final class GridClassesOptionsListener
 {
     private $gridClasses;
@@ -23,7 +28,7 @@ final class GridClassesOptionsListener
         $this->gridClasses = $gridClasses;
     }
 
-    public function onOptionsCallback(): array
+    public function __invoke(): array
     {
         return $this->gridClasses->getGridClassOptions();
     }

@@ -2,6 +2,12 @@ services:
   ErdmannFreunde\ContaoGridBundle\GridClasses:
     public: true
 
+  ErdmannFreunde\ContaoGridBundle\Controller\ContentElement\ColumnEndController: ~
+  ErdmannFreunde\ContaoGridBundle\Controller\ContentElement\ColumnStartController: ~
+  ErdmannFreunde\ContaoGridBundle\Controller\ContentElement\RowEndController: ~
+  ErdmannFreunde\ContaoGridBundle\Controller\ContentElement\RowStartController:
+    arguments: ['@ErdmannFreunde\ContaoGridBundle\GridClasses']
+
   ErdmannFreunde\ContaoGridBundle\EventListener\AddGridClassesToContentListener:
     arguments: [ '@request_stack', '@contao.routing.scope_matcher' ]
     public: true

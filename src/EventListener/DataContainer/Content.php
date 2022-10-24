@@ -13,12 +13,17 @@ declare(strict_types=1);
 namespace ErdmannFreunde\ContaoGridBundle\EventListener\DataContainer;
 
 use Contao\ContentModel;
+use Contao\CoreBundle\ServiceAnnotation\Callback;
 use Contao\Database;
+use Contao\DataContainer;
 use Contao\Input;
 
+/**
+ * @Callback(table="tl_content", target="config.onsubmit")
+ */
 final class Content
 {
-    public function onsubmitCallback(\DataContainer $dc): void
+    public function __invoke(DataContainer $dc): void
     {
         if (!\in_array($dc->activeRecord->type, ['rowStart', 'colStart'], true)) {
             return;
@@ -45,7 +50,7 @@ final class Content
         }
     }
 
-    private function siblingStopElmentIsMissing($pid, $ptable, $sorting, $rowOrCol)
+    private function siblingStopElmentIsMissing($pid, $ptable, $sorting, $rowOrCol): bool
     {
         if (!\in_array($rowOrCol, ['row', 'col'], true)) {
             throw new \InvalidArgumentException('Argument $rowOrCol must be either "row" or "col"');

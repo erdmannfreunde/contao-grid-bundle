@@ -12,16 +12,22 @@ declare(strict_types=1);
 
 namespace ErdmannFreunde\ContaoGridBundle\EventListener;
 
+use Contao\CoreBundle\ServiceAnnotation\Hook;
 use Contao\LayoutModel;
 use Contao\PageModel;
 use Contao\PageRegular;
 
+/**
+ * @Hook("getPageLayout")
+ */
 final class IncludeCssListener
 {
-    public function onGetPageLayout(PageModel $pageModel, LayoutModel $layoutModel, PageRegular $page): void
+    public function __invoke(PageModel $pageModel, LayoutModel $layoutModel, PageRegular $page): void
     {
-        if ($layoutModel->addEuFGridCss) {
-            $GLOBALS['TL_FRAMEWORK_CSS'][] = 'bundles/erdmannfreundecontaogrid/euf_grid.css';
+        if (!$layoutModel->addEuFGridCss) {
+            return;
         }
+
+        $GLOBALS['TL_FRAMEWORK_CSS'][] = 'bundles/erdmannfreundecontaogrid/euf_grid.css';
     }
 }

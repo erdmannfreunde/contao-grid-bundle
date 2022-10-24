@@ -14,8 +14,6 @@ use ErdmannFreunde\ContaoGridBundle\EventListener\DataContainer\GridClassesOptio
 use ErdmannFreunde\ContaoGridBundle\EventListener\DataContainer\GridColsOptionsListener;
 use ErdmannFreunde\ContaoGridBundle\EventListener\DataContainer\RegisterFieldsInPaletteListener;
 
-$GLOBALS['TL_DCA']['tl_form_field']['config']['onload_callback'][] = [RegisterFieldsInPaletteListener::class, 'onLoadFormFieldCallback'];
-
 $GLOBALS['TL_DCA']['tl_form_field']['palettes']['rowStart'] = '{type_legend},type;{expert_legend:hide},class;';
 $GLOBALS['TL_DCA']['tl_form_field']['palettes']['rowEnd'] = '{type_legend},type';
 $GLOBALS['TL_DCA']['tl_form_field']['palettes']['colStart'] =
@@ -27,7 +25,6 @@ $GLOBALS['TL_DCA']['tl_form_field']['fields']['grid_columns'] = [
     'exclude' => true,
     'search' => true,
     'inputType' => 'select',
-    'options_callback' => [GridColsOptionsListener::class, 'onOptionsCallback'],
     'eval' => [
         'mandatory' => false,
         'multiple' => true,
@@ -43,7 +40,6 @@ $GLOBALS['TL_DCA']['tl_form_field']['fields']['grid_options'] = [
     'exclude' => true,
     'search' => true,
     'inputType' => 'select',
-    'options_callback' => [GridClassesOptionsListener::class, 'onOptionsCallback'],
     'eval' => [
         'mandatory' => false,
         'multiple' => true,

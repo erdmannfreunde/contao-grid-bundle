@@ -17,6 +17,11 @@ use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 final class ErdmannFreundeContaoGridBundle extends Bundle
 {
+    public function getPath(): string
+    {
+        return \dirname(__DIR__);
+    }
+
     public function getContainerExtension(): ErdmannFreundeContaoGridExtension
     {
         return new ErdmannFreundeContaoGridExtension();

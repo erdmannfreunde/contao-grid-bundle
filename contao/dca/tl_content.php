@@ -10,16 +10,6 @@ declare(strict_types=1);
  * @license MIT
  */
 
-use ErdmannFreunde\ContaoGridBundle\EventListener\DataContainer\Content;
-use ErdmannFreunde\ContaoGridBundle\EventListener\DataContainer\GridClassesOptionsListener;
-use ErdmannFreunde\ContaoGridBundle\EventListener\DataContainer\GridColsOptionsListener;
-use ErdmannFreunde\ContaoGridBundle\EventListener\DataContainer\RegisterFieldsInPaletteListener;
-use ErdmannFreunde\ContaoGridBundle\EventListener\DataContainer\TranslatedLabelsListener;
-
-$GLOBALS['TL_DCA']['tl_content']['config']['onload_callback'][] = [RegisterFieldsInPaletteListener::class, 'onLoadContentCallback'];
-$GLOBALS['TL_DCA']['tl_content']['config']['onload_callback'][] = [TranslatedLabelsListener::class, 'onLoadContentCallback'];
-$GLOBALS['TL_DCA']['tl_content']['config']['onsubmit_callback'][] = [Content::class, 'onsubmitCallback'];
-
 $GLOBALS['TL_DCA']['tl_content']['palettes']['rowStart'] = '{type_legend},type;{expert_legend:hide},cssID';
 $GLOBALS['TL_DCA']['tl_content']['palettes']['rowEnd'] = '{type_legend},type';
 $GLOBALS['TL_DCA']['tl_content']['palettes']['colStart'] =
@@ -31,7 +21,6 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['grid_columns'] = [
     'exclude' => true,
     'search' => true,
     'inputType' => 'select',
-    'options_callback' => [GridColsOptionsListener::class, 'onOptionsCallback'],
     'eval' => [
         'mandatory' => false,
         'multiple' => true,
@@ -47,7 +36,6 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['grid_options'] = [
     'exclude' => true,
     'search' => true,
     'inputType' => 'select',
-    'options_callback' => [GridClassesOptionsListener::class, 'onOptionsCallback'],
     'eval' => [
         'mandatory' => false,
         'multiple' => true,

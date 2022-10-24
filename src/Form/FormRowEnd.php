@@ -14,6 +14,8 @@ namespace ErdmannFreunde\ContaoGridBundle\Form;
 
 use Contao\BackendTemplate;
 use Contao\Widget;
+use Contao\System;
+use Symfony\Component\HttpFoundation\Request;
 
 class FormRowEnd extends Widget
 {
@@ -26,7 +28,9 @@ class FormRowEnd extends Widget
     public function parse($arrAttributes = null)
     {
         // Return a wildcard in the back end
-        if (TL_MODE === 'BE') {
+        $request = System::getContainer()->get('request_stack')->getCurrentRequest();
+
+        if ($request && System::getContainer()->get('contao.routing.scope_matcher')->isBackendRequest($request)) {
             /** @var BackendTemplate|object $objTemplate */
             $objTemplate = new BackendTemplate('be_wildcard');
 
