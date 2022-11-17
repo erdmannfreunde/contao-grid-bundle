@@ -25,21 +25,23 @@ final class Content
 {
     public function __invoke(DataContainer $dc): void
     {
-        if (!\in_array($dc->activeRecord->type, ['rowStart', 'colStart'], true)) {
+        $data = (array) $dc->getCurrentRecord();
+
+        if (!\in_array($data['type'], ['rowStart', 'colStart'], true)) {
             return;
         }
 
         if (
-            'auto' !== Input::post('SUBMIT_TYPE') && $this->siblingStopElmentIsMissing(
-                $dc->activeRecord->pid,
-                $dc->activeRecord->ptable,
-                $dc->activeRecord->sorting,
-                substr($dc->activeRecord->type, 0, 3)
+            'auto' !== Input::post('SUBMIT_TYPE') && $this->siblingStopElementIsMissing(
+                $data['pid'],
+                $data['ptable'],
+                $data['sorting'],
+                substr($data['type'], 0, 3)
             )
         ) {
-            $data = $dc->activeRecord->row();
+
             unset($data['id']);
-            $data['type'] = str_replace('Start', 'End', $dc->activeRecord->type);
+            $data['type'] = str_replace('Start', 'End', $data['type']);
             ++$data['sorting'];
 
             $newElement = new ContentModel();
@@ -50,7 +52,7 @@ final class Content
         }
     }
 
-    private function siblingStopElmentIsMissing($pid, $ptable, $sorting, $rowOrCol): bool
+    private function siblingStopElementIsMissing($pid, $ptable, $sorting, $rowOrCol): bool
     {
         if (!\in_array($rowOrCol, ['row', 'col'], true)) {
             throw new \InvalidArgumentException('Argument $rowOrCol must be either "row" or "col"');
