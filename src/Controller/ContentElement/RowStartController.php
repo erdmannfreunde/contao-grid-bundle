@@ -17,6 +17,7 @@ use Contao\ContentModel;
 use Contao\CoreBundle\Controller\ContentElement\AbstractContentElementController;
 use Contao\CoreBundle\ServiceAnnotation\ContentElement;
 use Contao\CoreBundle\Twig\FragmentTemplate;
+use Contao\StringUtil;
 use Symfony\Component\HttpFoundation\Request;
 use ErdmannFreunde\ContaoGridBundle\GridClasses;
 use Symfony\Component\HttpFoundation\Response;
@@ -37,8 +38,9 @@ class RowStartController extends AbstractContentElementController
         $template->rowClass = $rowClass;
 
         if ($this->get('contao.routing.scope_matcher')->isBackendRequest($request)) {
-            $strCustomClasses = '';
+            $model->cssID = StringUtil::deserialize($model->cssID);
 
+            $strCustomClasses = '';
             if ($model->cssID[1]) {
                 $strCustomClasses .= ', ';
                 $strCustomClasses .= str_replace(' ', ', ', $model->cssID[1]);
@@ -46,7 +48,7 @@ class RowStartController extends AbstractContentElementController
 
             $template = new BackendTemplate('be_wildcard');
             $template->wildcard = '### E&F GRID: '.$GLOBALS['TL_LANG']['FFL']['rowStart'][0].'  ###';
-            $template->wildcard .= '<div class="tl_content_right tl_gray m12">('.$rowClass.$strCustomClasses.')</div>';
+            $template->wildcard .= '<div class="tl_content_right tl_gray m12" style="text-transform: initial">('.$rowClass.$strCustomClasses.')</div>';
 
             return $template->getResponse();
         }
