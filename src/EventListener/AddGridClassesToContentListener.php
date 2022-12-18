@@ -63,7 +63,7 @@ final class AddGridClassesToContentListener
                     break;
 
                 case 'colStart':
-                    $strBuffer = str_replace('ce_colStart', 'ce_colStart '.$strClasses, $strBuffer);
+                    $strBuffer = preg_replace('/(?<=["\s])ce_colStart(?=["\s])/', 'ce_colStart '.$strClasses, $strBuffer, 1);
                     break;
 
                 default:
