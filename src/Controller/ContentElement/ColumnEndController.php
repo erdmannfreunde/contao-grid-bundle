@@ -21,7 +21,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
- * @ContentElement("colEnd", category="euf_grid"")
+ * @ContentElement("colEnd", category="euf_grid")
  */
 class ColumnEndController extends AbstractContentElementController
 {
