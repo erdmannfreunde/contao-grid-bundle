@@ -48,7 +48,9 @@ class RowStartController extends AbstractContentElementController
 
             $template = new BackendTemplate('be_wildcard');
             $template->wildcard = '### E&F GRID: '.$GLOBALS['TL_LANG']['FFL']['rowStart'][0].'  ###';
-            $template->wildcard .= '<div class="tl_content_right tl_gray m12" style="text-transform: initial">('.$rowClass.$strCustomClasses.')</div>';
+            $template->wildcard .= '<div class="tl_grid_note">('.$rowClass.$strCustomClasses.')</div>';
+
+            $GLOBALS['TL_CSS'][] = 'bundles/erdmannfreundecontaogrid/grid_backend.css';
 
             return $template->getResponse();
         }

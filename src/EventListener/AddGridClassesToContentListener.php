@@ -72,7 +72,9 @@ final class AddGridClassesToContentListener
             }
 
             if ($this->scopeMatcher->isBackendRequest($this->requestStack->getCurrentRequest())) {
-                $strBuffer = '<div class="tl_gray tl_content_right">'.$strClasses.'</div>'.$strBuffer;
+                $strBuffer = '<div class="tl_grid_note">'.$strClasses.'</div>'.$strBuffer;
+
+                $GLOBALS['TL_CSS'][] = 'bundles/erdmannfreundecontaogrid/grid_backend.css';
             }
         }
 
