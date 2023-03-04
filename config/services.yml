@@ -1,4 +1,12 @@
 services:
+  _defaults:
+    autoconfigure: true
+
+  _instanceof:
+    Symfony\Bundle\FrameworkBundle\Controller\AbstractController:
+      calls:
+        - [setContainer, ['@Psr\Container\ContainerInterface']]
+
   ErdmannFreunde\ContaoGridBundle\GridClasses:
     public: true
 
