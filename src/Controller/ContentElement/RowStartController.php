@@ -37,7 +37,7 @@ class RowStartController extends AbstractContentElementController
 
         $template->rowClass = $rowClass;
 
-        if ($this->get('contao.routing.scope_matcher')->isBackendRequest($request)) {
+        if ($this->container->get('contao.routing.scope_matcher')->isBackendRequest($request)) {
             $model->cssID = StringUtil::deserialize($model->cssID);
 
             $strCustomClasses = '';
