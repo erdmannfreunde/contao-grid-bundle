@@ -1,7 +1,21 @@
+:root {
+    --grid-note-bg: rgb(255 255 255 / 80%);
+
+    @media (prefers-color-scheme: dark) {
+        --grid-note-bg: rgb(0 0 0 / 80%);
+    }
+}
+
+html[data-color-scheme=dark] {
+    --grid-note-bg: rgb(27 29 33 / 80%); 
+}
+
 .tl_grid_note {
     position: absolute;
     top: 10px;
     right: 10px;
     text-transform: initial;
     color: var(--gray);
+    background: var(--grid-note-bg);
+    padding: 0 0 0 10px;
 }

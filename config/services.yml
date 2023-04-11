@@ -17,6 +17,7 @@ services:
   ErdmannFreunde\ContaoGridBundle\Controller\ContentElement\RowEndController: ~
 
   ErdmannFreunde\ContaoGridBundle\EventListener\DataContainer\Content: ~
+  ErdmannFreunde\ContaoGridBundle\EventListener\DataContainer\ContentOnLoadCallbackListener: ~
   ErdmannFreunde\ContaoGridBundle\EventListener\DataContainer\GridClassesOptionsListener:
     arguments: [ '@ErdmannFreunde\ContaoGridBundle\GridClasses' ]
   ErdmannFreunde\ContaoGridBundle\EventListener\DataContainer\GridColsOptionsListener:
