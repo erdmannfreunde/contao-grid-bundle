@@ -69,7 +69,7 @@ final class Configuration implements ConfigurationInterface
                     ->defaultValue(range(1, 12))
                 ->end()
                 ->scalarNode('group_class')
-                    ->defaultValue('group-start')
+                    ->defaultValue('group')
                 ->end()
                 ->arrayNode('group_tag')
                     ->scalarPrototype()->end()
