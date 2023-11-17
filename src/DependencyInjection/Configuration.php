@@ -68,6 +68,9 @@ final class Configuration implements ConfigurationInterface
                     ->integerPrototype()->end()
                     ->defaultValue(range(1, 12))
                 ->end()
+                ->scalarNode('group_class')
+                    ->defaultValue('group-start')
+                ->end()
             ->end()
         ;
 

@@ -33,7 +33,7 @@ class GroupStartController extends AbstractContentElementController
 
     protected function getResponse(FragmentTemplate $template, ContentModel $model, Request $request): Response
     {
-        $groupClass = $this->gridClasses->getgroupClass();
+        $groupClass = $this->gridClasses->getGroupClass();
 
         $template->groupClass = $groupClass;
 

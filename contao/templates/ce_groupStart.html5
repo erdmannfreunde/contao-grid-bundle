@@ -1,0 +1,2 @@
+
+<div <?= $this->cssID ?> class="<?php echo $this->groupClass ?> <?php echo $this->class ?>">

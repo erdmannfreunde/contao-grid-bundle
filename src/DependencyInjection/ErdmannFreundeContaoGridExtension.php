@@ -49,6 +49,7 @@ final class ErdmannFreundeContaoGridExtension extends Extension
             $config['positioning'],
             $config['directions'],
             $config['options_columns'],
+            $config['group_class'],
         ]);
     }
 }
