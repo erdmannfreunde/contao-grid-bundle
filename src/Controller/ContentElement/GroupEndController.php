@@ -23,7 +23,7 @@ use Symfony\Component\HttpFoundation\Response;
 /**
  * @ContentElement("groupEnd", category="euf_grid")
  */
-class groupEndController extends AbstractContentElementController
+class GroupEndController extends AbstractContentElementController
 {
     protected function getResponse(FragmentTemplate $template, ContentModel $model, Request $request): Response
     {
