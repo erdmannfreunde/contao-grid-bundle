@@ -33,6 +33,9 @@
     "contao/manager-plugin": "^2.7",
     "contao/easy-coding-standard": "^4.0"
   },
+  "conflict": {
+    "contao/core-bundle": "<5.0"
+  },
   "autoload": {
     "psr-4": {
       "ErdmannFreunde\\ContaoGridBundle\\": "src"
