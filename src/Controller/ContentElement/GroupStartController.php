@@ -36,6 +36,7 @@ class GroupStartController extends AbstractContentElementController
         $groupClass = $this->gridClasses->getGroupClass();
 
         $template->groupClass = $groupClass;
+        $template->groupTag = $model->group_tag;
 
         if ($this->container->get('contao.routing.scope_matcher')->isBackendRequest($request)) {
             $model->cssID = StringUtil::deserialize($model->cssID);

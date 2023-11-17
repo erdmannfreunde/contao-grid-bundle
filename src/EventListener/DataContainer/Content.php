@@ -27,7 +27,7 @@ final class Content
     {
         $data = (array) $dc->getCurrentRecord();
 
-        if (!\in_array($data['type'], ['rowStart', 'colStart'], true)) {
+        if (!\in_array($data['type'], ['rowStart', 'colStart', 'groupStart'], true)) {
             return;
         }
 
@@ -36,7 +36,8 @@ final class Content
                 $data['pid'],
                 $data['ptable'],
                 $data['sorting'],
-                substr($data['type'], 0, 3)
+                //substr($data['type'], 0, 3)
+                str_replace('Start', '', $data['type'])
             )
         ) {
 
@@ -52,15 +53,15 @@ final class Content
         }
     }
 
-    private function siblingStopElementIsMissing($pid, $ptable, $sorting, $rowOrCol): bool
+    private function siblingStopElementIsMissing($pid, $ptable, $sorting, $rowOrColOrGroup): bool
     {
-        if (!\in_array($rowOrCol, ['row', 'col'], true)) {
-            throw new \InvalidArgumentException('Argument $rowOrCol must be either "row" or "col"');
+        if (!\in_array($rowOrColOrGroup, ['row', 'col', 'group'], true)) {
+            throw new \InvalidArgumentException('Argument $rowOrColOrGroup must be either "row" or "col" or "group"');
         }
 
         $statement = Database::getInstance()
             ->prepare(
-                sprintf('SELECT * FROM tl_content WHERE pid=? AND ptable=? AND sorting>? AND type IN("%sStart", "%sEnd") ORDER BY sorting', $rowOrCol, $rowOrCol)
+                sprintf('SELECT * FROM tl_content WHERE pid=? AND ptable=? AND sorting>? AND type IN("%sStart", "%sEnd") ORDER BY sorting', $rowOrColOrGroup, $rowOrColOrGroup)
             )
             ->limit(1)
             ->execute($pid, $ptable, $sorting)
@@ -70,7 +71,7 @@ final class Content
             return true;
         }
 
-        if ($rowOrCol.'End' !== $row['type']) {
+        if ($rowOrColOrGroup.'End' !== $row['type']) {
             return true;
         }
 

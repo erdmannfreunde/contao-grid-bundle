@@ -71,6 +71,10 @@ final class Configuration implements ConfigurationInterface
                 ->scalarNode('group_class')
                     ->defaultValue('group-start')
                 ->end()
+                ->arrayNode('group_tag')
+                    ->scalarPrototype()->end()
+                    ->defaultValue(['div', 'span', 'p', 'button'])
+                ->end()
             ->end()
         ;
 

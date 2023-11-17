@@ -19,7 +19,8 @@ services:
   
   ErdmannFreunde\ContaoGridBundle\Controller\ContentElement\GroupStartController:
     arguments: ['@ErdmannFreunde\ContaoGridBundle\GridClasses']
-  ErdmannFreunde\ContaoGridBundle\Controller\ContentElement\GroupEndController: ~
+  ErdmannFreunde\ContaoGridBundle\Controller\ContentElement\GroupEndController: 
+    arguments: ['@ErdmannFreunde\ContaoGridBundle\GridClasses']
 
   ErdmannFreunde\ContaoGridBundle\EventListener\DataContainer\Content: ~
   ErdmannFreunde\ContaoGridBundle\EventListener\DataContainer\ContentOnLoadCallbackListener: ~
@@ -29,6 +30,8 @@ services:
     arguments: [ '@ErdmannFreunde\ContaoGridBundle\GridClasses' ]
   ErdmannFreunde\ContaoGridBundle\EventListener\DataContainer\RegisterFieldsInPaletteListener:
   ErdmannFreunde\ContaoGridBundle\EventListener\DataContainer\TranslatedLabelsListener: ~
+  ErdmannFreunde\ContaoGridBundle\EventListener\DataContainer\GroupTagOptionsListener:
+    arguments: [ '@ErdmannFreunde\ContaoGridBundle\GridClasses' ]
 
   ErdmannFreunde\ContaoGridBundle\EventListener\AddGridClassesToContentListener:
     arguments: [ '@request_stack', '@contao.routing.scope_matcher' ]

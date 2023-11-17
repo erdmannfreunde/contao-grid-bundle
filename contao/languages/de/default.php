@@ -21,3 +21,5 @@ $GLOBALS['TL_LANG']['FFL']['rowStart'] = ['Reihe Start', 'Reihe Start'];
 $GLOBALS['TL_LANG']['FFL']['rowEnd'] = ['Reihe Ende', 'Reihe Start'];
 $GLOBALS['TL_LANG']['FFL']['colStart'] = ['Spalte Start', ''];
 $GLOBALS['TL_LANG']['FFL']['colEnd'] = ['Spalte Ende', ''];
+$GLOBALS['TL_LANG']['FFL']['groupStart'] = ['Gruppe Start', 'Gruppe Start'];
+$GLOBALS['TL_LANG']['FFL']['groupEnd'] = ['Gruppe Ende', 'Gruppe Ende'];
