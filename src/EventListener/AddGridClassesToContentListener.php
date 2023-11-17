@@ -33,7 +33,7 @@ final class AddGridClassesToContentListener
         $strClasses = '';
 
         // Bei diesen ContentElementen soll nichts verändert werden
-        $arrWrongCE = ['rowStart', 'rowEnd', 'colEnd'];
+        $arrWrongCE = ['rowStart', 'rowEnd', 'colEnd', 'groupEnd'];
 
         if (
             !\in_array($contentModel->type, $arrWrongCE, true)

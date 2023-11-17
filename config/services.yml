@@ -12,9 +12,14 @@ services:
 
   ErdmannFreunde\ContaoGridBundle\Controller\ContentElement\ColumnStartController: ~
   ErdmannFreunde\ContaoGridBundle\Controller\ContentElement\ColumnEndController: ~
+  
   ErdmannFreunde\ContaoGridBundle\Controller\ContentElement\RowStartController:
     arguments: ['@ErdmannFreunde\ContaoGridBundle\GridClasses']
   ErdmannFreunde\ContaoGridBundle\Controller\ContentElement\RowEndController: ~
+  
+  ErdmannFreunde\ContaoGridBundle\Controller\ContentElement\GroupStartController:
+    arguments: ['@ErdmannFreunde\ContaoGridBundle\GridClasses']
+  ErdmannFreunde\ContaoGridBundle\Controller\ContentElement\GroupEndController: ~
 
   ErdmannFreunde\ContaoGridBundle\EventListener\DataContainer\Content: ~
   ErdmannFreunde\ContaoGridBundle\EventListener\DataContainer\ContentOnLoadCallbackListener: ~

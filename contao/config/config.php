@@ -24,3 +24,5 @@ $GLOBALS['TL_WRAPPERS']['start'][] = 'rowStart';
 $GLOBALS['TL_WRAPPERS']['stop'][] = 'rowEnd';
 $GLOBALS['TL_WRAPPERS']['start'][] = 'colStart';
 $GLOBALS['TL_WRAPPERS']['stop'][] = 'colEnd';
+$GLOBALS['TL_WRAPPERS']['start'][] = 'groupStart';
+$GLOBALS['TL_WRAPPERS']['stop'][] = 'groupEnd';
