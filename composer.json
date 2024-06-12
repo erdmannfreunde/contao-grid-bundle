@@ -50,6 +50,6 @@
     }
   },
   "conflict": {
-    "contao/core-bundle": "^4.4",
+    "contao/core-bundle": "^4.4"
   }
 }
