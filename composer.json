@@ -48,5 +48,8 @@
       "contao/manager-plugin": true,
       "php-http/discovery": true
     }
+  },
+  "conflict": {
+    "contao/core-bundle": "^4.4",
   }
 }
