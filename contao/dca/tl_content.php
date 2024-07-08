@@ -10,11 +10,11 @@ declare(strict_types=1);
  * @license MIT
  */
 
-$GLOBALS['TL_DCA']['tl_content']['palettes']['rowStart'] = '{type_legend},type;{expert_legend:hide},cssID';
-$GLOBALS['TL_DCA']['tl_content']['palettes']['rowEnd'] = '{type_legend},type';
+$GLOBALS['TL_DCA']['tl_content']['palettes']['rowStart'] = '{type_legend},type;{protected_legend:hide},protected;{expert_legend:hide},cssID';
+$GLOBALS['TL_DCA']['tl_content']['palettes']['rowEnd'] = '{type_legend},type;{protected_legend:hide},protected;';
 $GLOBALS['TL_DCA']['tl_content']['palettes']['colStart'] =
-    '{type_legend},type;{grid_legend},grid_columns,grid_options;{expert_legend:hide},cssID';
-$GLOBALS['TL_DCA']['tl_content']['palettes']['colEnd'] = '{type_legend},type';
+    '{type_legend},type;{grid_legend},grid_columns,grid_options;{protected_legend:hide},protected;{expert_legend:hide},cssID';
+$GLOBALS['TL_DCA']['tl_content']['palettes']['colEnd'] = '{type_legend},type;{protected_legend:hide},protected;';
 
 $GLOBALS['TL_DCA']['tl_content']['fields']['grid_columns'] = [
     'label' => &$GLOBALS['TL_LANG']['tl_content']['grid_columns'],
