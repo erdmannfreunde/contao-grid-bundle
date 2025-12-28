@@ -13,14 +13,12 @@ declare(strict_types=1);
 namespace ErdmannFreunde\ContaoGridBundle\EventListener\DataContainer;
 
 use Contao\ContentModel;
-use Contao\CoreBundle\ServiceAnnotation\Callback;
+use Contao\CoreBundle\DependencyInjection\Attribute\AsCallback;
 use Contao\Database;
 use Contao\DataContainer;
 use Contao\Input;
 
-/**
- * @Callback(table="tl_content", target="config.onsubmit")
- */
+#[AsCallback(table: 'tl_content', target: 'config.onsubmit')]
 final class Content
 {
     public function __invoke(DataContainer $dc): void
@@ -36,10 +34,9 @@ final class Content
                 $data['pid'],
                 $data['ptable'],
                 $data['sorting'],
-                substr($data['type'], 0, 3)
+                substr($data['type'], 0, 3),
             )
         ) {
-
             unset($data['id']);
             $data['type'] = str_replace('Start', 'End', $data['type']);
             ++$data['sorting'];
@@ -60,7 +57,7 @@ final class Content
 
         $statement = Database::getInstance()
             ->prepare(
-                sprintf('SELECT * FROM tl_content WHERE pid=? AND ptable=? AND sorting>? AND type IN("%sStart", "%sEnd") ORDER BY sorting', $rowOrCol, $rowOrCol)
+                \sprintf('SELECT * FROM tl_content WHERE pid=? AND ptable=? AND sorting>? AND type IN("%sStart", "%sEnd") ORDER BY sorting', $rowOrCol, $rowOrCol),
             )
             ->limit(1)
             ->execute($pid, $ptable, $sorting)

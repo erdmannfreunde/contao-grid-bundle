@@ -12,11 +12,9 @@ declare(strict_types=1);
 
 namespace ErdmannFreunde\ContaoGridBundle\EventListener\DataContainer;
 
-use Contao\CoreBundle\ServiceAnnotation\Callback;
+use Contao\CoreBundle\DependencyInjection\Attribute\AsCallback;
 
-/**
- * @Callback(table="tl_content", target="config.onload")
- */
+#[AsCallback(table: 'tl_content', target: 'config.onload')]
 class ContentOnLoadCallbackListener
 {
     public function __invoke(): void
@@ -24,5 +22,3 @@ class ContentOnLoadCallbackListener
         $GLOBALS['TL_CSS'][] = 'bundles/erdmannfreundecontaogrid/grid_backend.css';
     }
 }
-
-

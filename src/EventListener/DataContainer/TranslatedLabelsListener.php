@@ -12,15 +12,12 @@ declare(strict_types=1);
 
 namespace ErdmannFreunde\ContaoGridBundle\EventListener\DataContainer;
 
-use Contao\CoreBundle\ServiceAnnotation\Callback;
+use Contao\CoreBundle\DependencyInjection\Attribute\AsCallback;
 
-/**
- * @Callback(table="tl_content", target="config.onload")
- */
-final class TranslatedLabelsListener
+#[AsCallback(table: 'tl_content', target: 'config.onload')]
+final readonly class TranslatedLabelsListener
 {
-
-    public function __construct(private readonly bool $translatedLabels = false)
+    public function __construct(private bool $translatedLabels = false)
     {
     }
 
@@ -30,7 +27,7 @@ final class TranslatedLabelsListener
             return;
         }
 
-            $GLOBALS['TL_DCA']['tl_content']['fields']['grid_columns']['reference'] = &$GLOBALS['TL_LANG']['MSC']['grid_columns'];
-            $GLOBALS['TL_DCA']['tl_content']['fields']['grid_options']['reference'] = &$GLOBALS['TL_LANG']['MSC']['grid_options'];
+        $GLOBALS['TL_DCA']['tl_content']['fields']['grid_columns']['reference'] = &$GLOBALS['TL_LANG']['MSC']['grid_columns'];
+        $GLOBALS['TL_DCA']['tl_content']['fields']['grid_options']['reference'] = &$GLOBALS['TL_LANG']['MSC']['grid_options'];
     }
 }

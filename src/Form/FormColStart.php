@@ -13,9 +13,8 @@ declare(strict_types=1);
 namespace ErdmannFreunde\ContaoGridBundle\Form;
 
 use Contao\BackendTemplate;
-use Contao\Widget;
 use Contao\System;
-use Symfony\Component\HttpFoundation\Request;
+use Contao\Widget;
 
 class FormColStart extends Widget
 {

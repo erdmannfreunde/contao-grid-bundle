@@ -13,7 +13,7 @@ declare(strict_types=1);
 $GLOBALS['TL_DCA']['tl_layout']['palettes']['default'] = str_replace(
     ',combineScripts',
     ',combineScripts,addEuFGridCss',
-    $GLOBALS['TL_DCA']['tl_layout']['palettes']['default']
+    $GLOBALS['TL_DCA']['tl_layout']['palettes']['default'],
 );
 
 $GLOBALS['TL_DCA']['tl_layout']['fields']['addEuFGridCss'] = [

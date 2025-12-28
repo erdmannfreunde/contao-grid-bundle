@@ -15,16 +15,14 @@ namespace ErdmannFreunde\ContaoGridBundle\Controller\ContentElement;
 use Contao\BackendTemplate;
 use Contao\ContentModel;
 use Contao\CoreBundle\Controller\ContentElement\AbstractContentElementController;
-use Contao\CoreBundle\ServiceAnnotation\ContentElement;
+use Contao\CoreBundle\DependencyInjection\Attribute\AsContentElement;
 use Contao\CoreBundle\Twig\FragmentTemplate;
 use Contao\StringUtil;
-use Symfony\Component\HttpFoundation\Request;
 use ErdmannFreunde\ContaoGridBundle\GridClasses;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-/**
- * @ContentElement("rowStart", category="euf_grid")
- */
+#[AsContentElement('rowStart', category: 'euf_grid')]
 class RowStartController extends AbstractContentElementController
 {
     public function __construct(private readonly GridClasses $gridClasses)

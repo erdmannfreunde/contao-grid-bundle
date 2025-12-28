@@ -12,14 +12,12 @@ declare(strict_types=1);
 
 namespace ErdmannFreunde\ContaoGridBundle\EventListener;
 
-use Contao\CoreBundle\ServiceAnnotation\Hook;
+use Contao\CoreBundle\DependencyInjection\Attribute\AsHook;
 use Contao\LayoutModel;
 use Contao\PageModel;
 use Contao\PageRegular;
 
-/**
- * @Hook("getPageLayout")
- */
+#[AsHook('getPageLayout')]
 final class IncludeCssListener
 {
     public function __invoke(PageModel $pageModel, LayoutModel $layoutModel, PageRegular $page): void

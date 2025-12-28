@@ -12,17 +12,14 @@ declare(strict_types=1);
 
 namespace ErdmannFreunde\ContaoGridBundle\EventListener\DataContainer;
 
-use Contao\CoreBundle\ServiceAnnotation\Callback;
+use Contao\CoreBundle\DependencyInjection\Attribute\AsCallback;
 use ErdmannFreunde\ContaoGridBundle\GridClasses;
 
-/**
- * @Callback(table="tl_content", target="fields.grid_options.options")
- * @Callback(table="tl_form_field", target="fields.grid_options.options")
- */
-final class GridClassesOptionsListener
+#[AsCallback(table: 'tl_content', target: 'fields.grid_options.options')]
+#[AsCallback(table: 'tl_form_field', target: 'fields.grid_options.options')]
+final readonly class GridClassesOptionsListener
 {
-
-    public function __construct(private readonly GridClasses $gridClasses)
+    public function __construct(private GridClasses $gridClasses)
     {
     }
 

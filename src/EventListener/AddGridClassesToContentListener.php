@@ -13,19 +13,18 @@ declare(strict_types=1);
 namespace ErdmannFreunde\ContaoGridBundle\EventListener;
 
 use Contao\ContentModel;
+use Contao\CoreBundle\DependencyInjection\Attribute\AsHook;
 use Contao\CoreBundle\Routing\ScopeMatcher;
-use Contao\CoreBundle\ServiceAnnotation\Hook;
 use Contao\StringUtil;
 use Symfony\Component\HttpFoundation\RequestStack;
 
-/**
- * @Hook("getContentElement")
- */
-final class AddGridClassesToContentListener
+#[AsHook('getContentElement')]
+final readonly class AddGridClassesToContentListener
 {
-
-    public function __construct(private readonly RequestStack $requestStack, private readonly ScopeMatcher $scopeMatcher)
-    {
+    public function __construct(
+        private RequestStack $requestStack,
+        private ScopeMatcher $scopeMatcher,
+    ) {
     }
 
     public function __invoke(ContentModel $contentModel, string $strBuffer)

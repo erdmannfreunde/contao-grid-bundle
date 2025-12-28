@@ -18,14 +18,13 @@ use Doctrine\DBAL\Connection;
 
 class TstampMigration extends AbstractMigration
 {
-
     public function __construct(private readonly Connection $connection)
     {
     }
 
     public function shouldRun(): bool
     {
-        $schemaManager = $this->connection->getSchemaManager();
+        $schemaManager = $this->connection->createSchemaManager();
 
         if (!$schemaManager->tablesExist(['tl_content'])) {
             return false;
@@ -43,13 +42,12 @@ class TstampMigration extends AbstractMigration
     {
         $this->connection->executeQuery(
             "UPDATE tl_content SET tstamp = :time WHERE tstamp = 0 AND (type='colEnd' OR type='rowEnd')",
-            ['time' => time()]
-        )
-        ;
+            ['time' => time()],
+        );
 
         return $this->createResult(
             true,
-            'Restored 4.9.15 compatibility for Contao-Grid-Bundle'
+            'Restored 4.9.15 compatibility for Contao-Grid-Bundle',
         );
     }
 }

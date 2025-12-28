@@ -12,76 +12,45 @@ declare(strict_types=1);
 
 namespace ErdmannFreunde\ContaoGridBundle;
 
-final class GridClasses
+final readonly class GridClasses
 {
-    /**
-     * @var string
-     */
-    private $rowClass;
-
-    /**
-     * @var array<int>
-     */
-    private $columns;
-
-    /**
-     * @var bool
-     */
-    private $columns_no_column;
-
-    /**
-     * @var array<string>
-     */
-    private $viewports;
-
-    /**
-     * @var bool
-     */
-    private $viewports_no_viewport;
-
-    /**
-     * @var array<string>
-     */
-    private $column_prefixes;
-
-    /**
-     * @var array<string>
-     */
-    private $options_prefixes;
-
-    /**
-     * @var array<string>
-     */
-    private $pulls;
-
-    /**
-     * @var array<string>
-     */
-    private $positioning;
-
-    /**
-     * @var array<string>
-     */
-    private $directions;
-
-    /**
-     * @var array<int>
-     */
-    private $options_columns;
-
-    public function __construct(string $rowClass, array $columns, bool $columns_no_column, array $viewports, bool $viewports_no_viewport, array $column_prefixes, ?array $options_prefixes, ?array $pulls, ?array $positioning, ?array $directions, array $options_columns)
-    {
-        $this->rowClass = $rowClass;
-        $this->columns = $columns;
-        $this->columns_no_column = $columns_no_column;
-        $this->viewports = $viewports;
-        $this->viewports_no_viewport = $viewports_no_viewport;
-        $this->column_prefixes = $column_prefixes;
-        $this->options_prefixes = $options_prefixes;
-        $this->pulls = $pulls;
-        $this->positioning = $positioning;
-        $this->directions = $directions;
-        $this->options_columns = $options_columns;
+    public function __construct(
+        private string $rowClass,
+        /**
+         * @var array<int>
+         */
+        private array $columns,
+        private bool $columns_no_column,
+        /**
+         * @var array<string>
+         */
+        private array $viewports,
+        private bool $viewports_no_viewport,
+        /**
+         * @var array<string>
+         */
+        private array $column_prefixes,
+        /**
+         * @var array<string>
+         */
+        private array|null $options_prefixes,
+        /**
+         * @var array<string>
+         */
+        private array|null $pulls,
+        /**
+         * @var array<string>
+         */
+        private array|null $positioning,
+        /**
+         * @var array<string>
+         */
+        private array|null $directions,
+        /**
+         * @var array<int>
+         */
+        private array $options_columns,
+    ) {
     }
 
     public function getRowClass(): string
@@ -114,22 +83,22 @@ final class GridClasses
         return $this->column_prefixes;
     }
 
-    public function getOptionsPrefixes(): ?array
+    public function getOptionsPrefixes(): array|null
     {
         return $this->options_prefixes;
     }
 
-    public function getPulls(): ?array
+    public function getPulls(): array|null
     {
         return $this->pulls;
     }
 
-    public function getPositioning(): ?array
+    public function getPositioning(): array|null
     {
         return $this->positioning;
     }
 
-    public function getDirections(): ?array
+    public function getDirections(): array|null
     {
         return $this->directions;
     }

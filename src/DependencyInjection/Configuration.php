@@ -21,7 +21,6 @@ final class Configuration implements ConfigurationInterface
     {
         $treeBuilder = new TreeBuilder('erdmannfreunde_contao_grid');
         $rootNode = $treeBuilder->getRootNode();
-
         $rootNode
             ->children()
                 ->booleanNode('translated_labels')

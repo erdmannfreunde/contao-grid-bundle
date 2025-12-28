@@ -12,17 +12,14 @@ declare(strict_types=1);
 
 namespace ErdmannFreunde\ContaoGridBundle\EventListener;
 
-use Contao\CoreBundle\ServiceAnnotation\Hook;
-use Contao\Form;
+use Contao\CoreBundle\DependencyInjection\Attribute\AsHook;
 use Contao\StringUtil;
 use Contao\Widget;
 
-/**
- * @Hook("loadFormField")
- */
+#[AsHook('loadFormField')]
 final class AddGridClassesToFormListener
 {
-    public function __invoke(Widget $objWidget, string $formId, array $data, Form $form): Widget
+    public function __invoke(Widget $objWidget): Widget
     {
         $strClasses = '';
 
