@@ -31,7 +31,7 @@
   },
   "require-dev": {
     "contao/manager-plugin": "^2.7",
-    "contao/easy-coding-standard": "^4.0"
+    "terminal42/contao-build-tools": "dev-main"
   },
   "autoload": {
     "psr-4": {
@@ -46,7 +46,8 @@
       "contao-components/installer": true,
       "dealerdirect/phpcodesniffer-composer-installer": true,
       "contao/manager-plugin": true,
-      "php-http/discovery": true
+      "php-http/discovery": true,
+      "terminal42/contao-build-tools": true
     }
   },
   "conflict": {

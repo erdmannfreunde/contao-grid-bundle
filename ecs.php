@@ -3,17 +3,10 @@
 declare(strict_types=1);
 
 use PhpCsFixer\Fixer\Comment\HeaderCommentFixer;
-use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
+use Symplify\EasyCodingStandard\Config\ECSConfig;
 
-return static function (ContainerConfigurator $containerConfigurator): void {
-    $containerConfigurator->import(__DIR__.'/vendor/contao/easy-coding-standard/config/contao.php');
-
-    $services = $containerConfigurator->services();
-
-    $services
-        ->set(HeaderCommentFixer::class)
-        ->call('configure', [[
+return static function (ECSConfig $ecsConfig): void {
+    $ecsConfig->ruleWithConfiguration(HeaderCommentFixer::class, [
             'header' => "This file is part of erdmannfreunde/contao-grid-bundle.\n\n(c) Erdmann & Freunde <https://erdmann-freunde.de>\n\n@license MIT",
-        ]])
-    ;
+    ]);
 };
