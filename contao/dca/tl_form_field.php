@@ -10,10 +10,6 @@ declare(strict_types=1);
  * @license MIT
  */
 
-use ErdmannFreunde\ContaoGridBundle\EventListener\DataContainer\GridClassesOptionsListener;
-use ErdmannFreunde\ContaoGridBundle\EventListener\DataContainer\GridColsOptionsListener;
-use ErdmannFreunde\ContaoGridBundle\EventListener\DataContainer\RegisterFieldsInPaletteListener;
-
 $GLOBALS['TL_DCA']['tl_form_field']['palettes']['rowStart'] = '{type_legend},type;{expert_legend:hide},class;';
 $GLOBALS['TL_DCA']['tl_form_field']['palettes']['rowEnd'] = '{type_legend},type';
 $GLOBALS['TL_DCA']['tl_form_field']['palettes']['colStart'] =

@@ -1,2 +1,2 @@
 
-<div class="<?php echo $this->rowClass ?> <?php echo $this->class ?>">
+<div class="<?= $this->rowClass ?> <?= $this->class ?>">

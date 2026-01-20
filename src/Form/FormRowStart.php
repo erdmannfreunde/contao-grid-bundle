@@ -15,7 +15,6 @@ namespace ErdmannFreunde\ContaoGridBundle\Form;
 use Contao\BackendTemplate;
 use Contao\System;
 use Contao\Widget;
-use Symfony\Component\HttpFoundation\Request;
 use ErdmannFreunde\ContaoGridBundle\GridClasses;
 
 class FormRowStart extends Widget
