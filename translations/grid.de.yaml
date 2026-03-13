@@ -1,0 +1,24 @@
+group:
+  col: Standard
+  col-xs: Sehr kleiner Bildschirm
+  col-sm: Kleiner Bildschirm
+  col-md: Mittlerer Bildschirm
+  col-lg: Großer Bildschirm
+  col-xl: Sehr großer Bildschirm
+
+column:
+  col: Standard
+  col-1: 1/12 Spalte
+  col-2: 2/12 Spalte
+  col-3: 3/12 Spalte
+  col-4: 4/12 Spalte
+  col-5: 5/12 Spalte
+  col-6: 6/12 Spalte
+  col-7: 7/12 Spalte
+  col-8: 8/12 Spalte
+  col-9: 9/12 Spalte
+  col-10: 10/12 Spalte
+  col-11: 11/12 Spalte
+  col-12: 12/12 Spalte
+
+option: {}
