@@ -54,9 +54,9 @@ final class ErdmannFreundeContaoGridExtension extends Extension
         ]);
 
         $definition = $container->getDefinition(GridColsOptionsListener::class);
-        $definition->setArgument(2, $config['translated_labels']);
+        $definition->setArgument('$translatedLabels', $config['translated_labels']);
 
         $definition = $container->getDefinition(GridClassesOptionsListener::class);
-        $definition->setArgument(2, $config['translated_labels']);
+        $definition->setArgument('$translatedLabels', $config['translated_labels']);
     }
 }
