@@ -21,6 +21,7 @@ use Contao\StringUtil;
 use ErdmannFreunde\ContaoGridBundle\GridClasses;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Twig\Markup;
 
 #[AsContentElement('rowStart', category: 'euf_grid')]
 class RowStartController extends AbstractContentElementController
@@ -45,8 +46,11 @@ class RowStartController extends AbstractContentElementController
             }
 
             $template = new BackendTemplate('be_wildcard');
-            $template->wildcard = '### E&F GRID: '.$GLOBALS['TL_LANG']['FFL']['rowStart'][0].'  ###';
-            $template->wildcard .= '<div class="tl_grid_note">'.$rowClass.$strCustomClasses.'</div>';
+            $template->wildcard = new Markup(
+                '### E&F GRID: '.$GLOBALS['TL_LANG']['FFL']['rowStart'][0].'  ###'
+                .'<div class="tl_grid_note">'.$rowClass.$strCustomClasses.'</div>',
+                'UTF-8',
+            );
 
             return $template->getResponse();
         }
