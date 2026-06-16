@@ -23,11 +23,7 @@ final readonly class TranslatedLabelsListener
 
     public function __invoke(): void
     {
-        if (!$this->translatedLabels) {
-            return;
-        }
-
-        $GLOBALS['TL_DCA']['tl_content']['fields']['grid_columns']['reference'] = &$GLOBALS['TL_LANG']['MSC']['grid_columns'];
-        $GLOBALS['TL_DCA']['tl_content']['fields']['grid_options']['reference'] = &$GLOBALS['TL_LANG']['MSC']['grid_options'];
+        // Kept for backwards compatibility with existing service wiring.
+        // Label translation is handled directly in the options callbacks.
     }
 }

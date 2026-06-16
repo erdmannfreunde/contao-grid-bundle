@@ -12,6 +12,8 @@ declare(strict_types=1);
 
 namespace ErdmannFreunde\ContaoGridBundle\DependencyInjection;
 
+use ErdmannFreunde\ContaoGridBundle\EventListener\DataContainer\GridClassesOptionsListener;
+use ErdmannFreunde\ContaoGridBundle\EventListener\DataContainer\GridColsOptionsListener;
 use ErdmannFreunde\ContaoGridBundle\EventListener\DataContainer\TranslatedLabelsListener;
 use ErdmannFreunde\ContaoGridBundle\GridClasses;
 use Symfony\Component\Config\FileLocator;
@@ -50,5 +52,11 @@ final class ErdmannFreundeContaoGridExtension extends Extension
             $config['directions'],
             $config['options_columns'],
         ]);
+
+        $definition = $container->getDefinition(GridColsOptionsListener::class);
+        $definition->setArgument('$translatedLabels', $config['translated_labels']);
+
+        $definition = $container->getDefinition(GridClassesOptionsListener::class);
+        $definition->setArgument('$translatedLabels', $config['translated_labels']);
     }
 }

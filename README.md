@@ -68,5 +68,27 @@ erdmannfreunde_contao_grid:
     - 12
 ```
 
+### Übersetzbare Grid-Klassen via Symfony/Twig-Translations
+
+Wenn du Labels für Grid-Klassen übersetzen möchtest, aktiviere zuerst:
+
+```yml
+erdmannfreunde_contao_grid:
+  translated_labels: true
+```
+
+Danach kannst du Übersetzungen über den Domain-Namen `grid` pflegen, z. B. in:
+
+- `translations/grid.de.yaml`
+- `translations/grid.en.yaml`
+
+Verwendete Keys:
+
+- `group.<klasse>` für Optgroup-Labels (z. B. `group.col-md`)
+- `column.<klasse>` für `grid_columns` (z. B. `column.col-md-6`)
+- `option.<klasse>` für `grid_options` (z. B. `option.align-md-center`)
+
+Wenn kein Key vorhanden ist, wird automatisch der Klassenname selbst angezeigt.
+
 ## Update-Hinweise
 - `contao-grid-bundle` ist ein Rewrite von euf_grid als Contao-Bundle. Reihen- und Spalten-Einstellungen basieren auf euf_grid Version 3 und sind somit kompatibel. Solltest du die Grid-Erweiterung über die `dcaconfig.php` angepasst haben, solltest du diese Anpassungen wie oben erwähnt über die `config.yml` vornehmen.
