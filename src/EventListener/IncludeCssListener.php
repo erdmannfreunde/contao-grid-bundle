@@ -26,6 +26,8 @@ final class IncludeCssListener
             return;
         }
 
+        trigger_deprecation('erdmannfreunde/contao-grid-bundle', '2.2', 'Using the "addEuFGridCss" option of page layout ID %s to include the grid CSS is deprecated and will no longer work in version 3.0. Add the grid classes to your own theme instead.', $layoutModel->id);
+
         $GLOBALS['TL_FRAMEWORK_CSS'][] = 'bundles/erdmannfreundecontaogrid/euf_grid.css';
     }
 }

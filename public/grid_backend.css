@@ -19,3 +19,21 @@ html[data-color-scheme=dark] {
     background: var(--grid-note-bg);
     padding: 0 0 0 10px;
 }
+
+.tl_checkbox_single_container:has(.tl_grid_deprecation) {
+    height: auto;
+}
+
+.tl_checkbox_single_container > span:has(.tl_grid_deprecation) {
+    flex-wrap: wrap;
+}
+
+.tl_grid_deprecation {
+    display: block;
+    flex-basis: 100%;
+    margin-top: 6px;
+}
+
+.tl_checkbox:not(:checked) ~ .tl_grid_deprecation {
+    display: none;
+}

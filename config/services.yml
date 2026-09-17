@@ -22,6 +22,7 @@ services:
     arguments: [ '@ErdmannFreunde\ContaoGridBundle\GridClasses' ]
   ErdmannFreunde\ContaoGridBundle\EventListener\DataContainer\GridColsOptionsListener:
     arguments: [ '@ErdmannFreunde\ContaoGridBundle\GridClasses' ]
+  ErdmannFreunde\ContaoGridBundle\EventListener\DataContainer\LayoutGridCssDeprecationListener: ~
   ErdmannFreunde\ContaoGridBundle\EventListener\DataContainer\RegisterFieldsInPaletteListener:
   ErdmannFreunde\ContaoGridBundle\EventListener\DataContainer\TranslatedLabelsListener: ~
 
