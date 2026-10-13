@@ -139,7 +139,7 @@ final readonly class GridClasses
 
         foreach ((array) $this->getOptionsPrefixes() as $prefix) {
             if ($this->isViewportsNoViewport()) {
-                foreach ($this->getColumns() as $direction) {
+                foreach ($this->getOptionsColumns() as $direction) {
                     $options[$prefix][] = implode('-', [$prefix, $direction]);
                 }
             }
