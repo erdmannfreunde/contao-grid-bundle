@@ -14,7 +14,7 @@ $GLOBALS['TL_DCA']['tl_form_field']['palettes']['rowStart'] = '{type_legend},typ
 $GLOBALS['TL_DCA']['tl_form_field']['palettes']['rowEnd'] = '{type_legend},type';
 $GLOBALS['TL_DCA']['tl_form_field']['palettes']['colStart'] =
     '{type_legend},type;{grid_legend},grid_columns,grid_options;{expert_legend:hide},class';
-$GLOBALS['TL_DCA']['tl_content']['palettes']['colEnd'] = '{type_legend},type';
+$GLOBALS['TL_DCA']['tl_form_field']['palettes']['colEnd'] = '{type_legend},type';
 
 $GLOBALS['TL_DCA']['tl_form_field']['fields']['grid_columns'] = [
     'label' => &$GLOBALS['TL_LANG']['tl_form_field']['grid_columns'],
