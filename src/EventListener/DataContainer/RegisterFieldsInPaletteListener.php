@@ -36,7 +36,7 @@ final class RegisterFieldsInPaletteListener
         foreach ($GLOBALS['TL_DCA']['tl_form_field']['palettes'] as $k => $palette) {
             if (
                 !\is_array($palette) && str_contains((string) $palette, 'customTpl')
-                && (!\in_array($k, ['html', 'fieldsetfsStop', 'rowStart'], true))
+                && (!\in_array($k, ['html', 'fieldsetStop', 'rowStart'], true))
             ) {
                 $GLOBALS['TL_DCA']['tl_form_field']['palettes'][$k] = str_replace(
                     '{template_legend:hide}',

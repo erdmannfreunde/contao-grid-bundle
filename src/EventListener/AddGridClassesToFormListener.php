@@ -24,7 +24,7 @@ final class AddGridClassesToFormListener
         $strClasses = '';
 
         // Bei diesen ContentElementen soll nichts verändert werden
-        $arrWrongFields = ['rowStart', 'rowEnd', 'colEnd', 'html', 'fieldsetfsStop'];
+        $arrWrongFields = ['rowStart', 'rowEnd', 'colEnd', 'html', 'fieldsetStop'];
 
         if (!\in_array($objWidget->type, $arrWrongFields, true) && (isset($objWidget->grid_columns) || isset($objWidget->grid_options))) {
             if ($objWidget->grid_columns) {
