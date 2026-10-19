@@ -20,5 +20,6 @@ class ContentOnLoadCallbackListener
     public function __invoke(): void
     {
         $GLOBALS['TL_CSS'][] = 'bundles/erdmannfreundecontaogrid/grid_backend.css';
+        $GLOBALS['TL_JAVASCRIPT'][] = 'bundles/erdmannfreundecontaogrid/grid_editor.js';
     }
 }

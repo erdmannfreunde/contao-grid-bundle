@@ -38,7 +38,7 @@ erdmannfreunde_contao_grid:
   viewports_no_viewport: true
   column_prefixes:
     - col
-    - row-span
+    - row
   options_prefixes:
     - col-start
     - row-start
@@ -68,5 +68,26 @@ erdmannfreunde_contao_grid:
     - 12
 ```
 
+## Bekannte Einschränkungen
+
+**Ein Grid in einem Grid setzt seine eigene Breite nicht selbst.** Beim Elementtyp *Grid* fehlen die Felder *Grid Columns* und *Grid Optionen* mit Absicht: Im Formular stünden sonst zwei Raster nebeneinander — der Raster-Editor für die Kinder und die Klassen für das Element selbst — und es wäre kaum zu erkennen, welches gerade gemeint ist. Die Breite eines verschachtelten Grids setzt du deshalb im Raster-Editor des übergeordneten Grids, genau wie bei jedem anderen Kind.
+
+## Beschriftung der Ansichten
+
+Im Raster-Editor heißen die Viewports „Basis", „ab Screen SM", „ab Screen MD" und so weiter. Welche Breite dahintersteckt, entscheidet dein Theme — die Erweiterung kennt die Breakpoints nicht und nennt deshalb nur das Kürzel.
+
+Wenn du es genauer haben möchtest, legst du im Projekt eine `translations/grid.de.yaml` an und überschreibst die Schlüssel, die du brauchen kannst:
+
+```yaml
+viewport:
+    md: 'ab 768 px'
+    lg: 'Desktop'
+```
+
+Viewports ohne eigenen Eintrag behalten das Muster aus `viewport.default`.
+
 ## Update-Hinweise
+- **Die Höhe heißt ab Version 3 `row-{viewport}-{n}`** statt `row-span-{viewport}-{n}`. Bestehende `row-span`-Klassen werden nicht mehr gelesen; da Version 3 ohnehin voraussetzt, dass die Bereiche neu angelegt werden, gibt es dafür keine Umwandlung.
+- **Das Grid-Element bekommt keine Klasse `row` mehr.** Es trägt nur noch `content-grid` und die Klassen, die du ihm selbst gibst — das Raster definierst du in deinem Theme an der Klasse deiner Wahl.
+- **Ab Version 3 liefert das Paket kein Stylesheet mehr.** Die Layout-Option „EuF-Grid CSS laden" und die Datei `euf_grid.css` sind entfallen — die Grid-Klassen gehören in dein Theme. Als Vorlage dient die [Datei aus Version 2](https://github.com/ErdmannFreunde/contao-grid-bundle/blob/2.x/public/euf_grid.css).
 - `contao-grid-bundle` ist ein Rewrite von euf_grid als Contao-Bundle. Reihen- und Spalten-Einstellungen basieren auf euf_grid Version 3 und sind somit kompatibel. Solltest du die Grid-Erweiterung über die `dcaconfig.php` angepasst haben, solltest du diese Anpassungen wie oben erwähnt über die `config.yml` vornehmen.

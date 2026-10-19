@@ -24,7 +24,7 @@
   },
   "require": {
     "php": ">=8.2",
-    "contao/core-bundle": "^5.0",
+    "contao/core-bundle": "^5.7",
     "symfony/config": "^6.4 || ^7.0",
     "symfony/dependency-injection": "^6.4 || ^7.0",
     "symfony/deprecation-contracts": "^3.0",
@@ -32,11 +32,17 @@
   },
   "require-dev": {
     "contao/manager-plugin": "^2.7",
-    "terminal42/contao-build-tools": "dev-main"
+    "terminal42/contao-build-tools": "dev-main",
+    "phpunit/phpunit": "^11.0"
   },
   "autoload": {
     "psr-4": {
       "ErdmannFreunde\\ContaoGridBundle\\": "src"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "ErdmannFreunde\\ContaoGridBundle\\Tests\\": "tests"
     }
   },
   "extra": {
@@ -52,6 +58,6 @@
     }
   },
   "conflict": {
-    "contao/core-bundle": "^4.4"
+    "contao/core-bundle": "<5.7"
   }
 }

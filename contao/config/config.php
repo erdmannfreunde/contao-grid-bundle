@@ -14,11 +14,14 @@ use ErdmannFreunde\ContaoGridBundle\Form\FormColEnd;
 use ErdmannFreunde\ContaoGridBundle\Form\FormColStart;
 use ErdmannFreunde\ContaoGridBundle\Form\FormRowEnd;
 use ErdmannFreunde\ContaoGridBundle\Form\FormRowStart;
+use ErdmannFreunde\ContaoGridBundle\Widget\GridEditorWidget;
 
 $GLOBALS['TL_FFL']['rowStart'] = FormRowStart::class;
 $GLOBALS['TL_FFL']['rowEnd'] = FormRowEnd::class;
 $GLOBALS['TL_FFL']['colStart'] = FormColStart::class;
 $GLOBALS['TL_FFL']['colEnd'] = FormColEnd::class;
+
+$GLOBALS['BE_FFL']['eufGridEditor'] = GridEditorWidget::class;
 
 $GLOBALS['TL_WRAPPERS']['start'][] = 'rowStart';
 $GLOBALS['TL_WRAPPERS']['stop'][] = 'rowEnd';

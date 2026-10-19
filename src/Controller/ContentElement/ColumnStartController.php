@@ -20,7 +20,7 @@ use Contao\CoreBundle\Twig\FragmentTemplate;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-#[AsContentElement('colStart', category: 'euf_grid')]
+#[AsContentElement('colStart', category: 'legacy')]
 class ColumnStartController extends AbstractContentElementController
 {
     protected function getResponse(FragmentTemplate $template, ContentModel $model, Request $request): Response

@@ -45,7 +45,7 @@ final class Configuration implements ConfigurationInterface
                 ->end()
                 ->arrayNode('column_prefixes')
                     ->scalarPrototype()->end()
-                    ->defaultValue(['col', 'row-span'])
+                    ->defaultValue(['col', 'row'])
                 ->end()
                 ->arrayNode('options_prefixes')
                     ->scalarPrototype()->end()

@@ -14,3 +14,6 @@ $GLOBALS['TL_LANG']['tl_content']['grid_legend'] = 'Grid-Settings';
 $GLOBALS['TL_LANG']['tl_content']['grid_columns'] = ['Grid Columns', 'for example: col-sm-5'];
 $GLOBALS['TL_LANG']['tl_content']['grid_options'] = ['Grid Options', 'for example: offset-sm-1 or pull-left-md'];
 $GLOBALS['TL_LANG']['tl_content']['grid_further_options'] = 'Further Options';
+
+$GLOBALS['TL_LANG']['tl_content']['grid_layout_legend'] = 'Grid';
+$GLOBALS['TL_LANG']['tl_content']['grid_layout'] = ['Layout', 'How the elements of this grid are arranged per viewport.'];

@@ -34,6 +34,11 @@ final readonly class AddGridClassesToContentListener
         // Bei diesen ContentElementen soll nichts verändert werden
         $arrWrongCE = ['rowStart', 'rowEnd', 'colEnd'];
 
+        // Kinder eines Grids bekommen ihr Zell-div vom Grid-Template, nicht von hier
+        if ('tl_content' === $contentModel->ptable && $this->isGridChild((int) $contentModel->pid)) {
+            return $strBuffer;
+        }
+
         if (
             !\in_array($contentModel->type, $arrWrongCE, true)
             && (isset($contentModel->grid_columns) || isset($contentModel->grid_options))
@@ -76,5 +81,13 @@ final readonly class AddGridClassesToContentListener
         }
 
         return $strBuffer;
+    }
+
+    private function isGridChild(int $pid): bool
+    {
+        // Contaos Model-Registry cached den Datensatz pro Request
+        $parent = ContentModel::findById($pid);
+
+        return \in_array($parent?->type, ['grid', 'grid_cell'], true);
     }
 }

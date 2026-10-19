@@ -16,20 +16,54 @@ services:
     arguments: ['@ErdmannFreunde\ContaoGridBundle\GridClasses']
   ErdmannFreunde\ContaoGridBundle\Controller\ContentElement\RowEndController: ~
 
+  ErdmannFreunde\ContaoGridBundle\Controller\ContentElement\GridController:
+    arguments:
+      - '@contao.framework'
+      - '@ErdmannFreunde\ContaoGridBundle\GridClasses'
+      - '@ErdmannFreunde\ContaoGridBundle\Grid\SpanParser'
+  ErdmannFreunde\ContaoGridBundle\Controller\ContentElement\GridCellController: ~
+
+  ErdmannFreunde\ContaoGridBundle\Grid\SpanParser:
+    arguments: [ '@ErdmannFreunde\ContaoGridBundle\GridClasses' ]
+  ErdmannFreunde\ContaoGridBundle\Grid\GridEditorData:
+    public: true
+    arguments:
+      - '@ErdmannFreunde\ContaoGridBundle\GridClasses'
+      - '@ErdmannFreunde\ContaoGridBundle\Grid\SpanParser'
+      - '@translator'
+  ErdmannFreunde\ContaoGridBundle\Grid\ClassFormatter:
+    arguments: [ '@ErdmannFreunde\ContaoGridBundle\GridClasses' ]
+  ErdmannFreunde\ContaoGridBundle\Grid\GridWriter:
+    arguments:
+      - '@security.helper'
+      - '@ErdmannFreunde\ContaoGridBundle\GridClasses'
+      - '@ErdmannFreunde\ContaoGridBundle\Grid\ClassFormatter'
+
   ErdmannFreunde\ContaoGridBundle\EventListener\DataContainer\Content: ~
   ErdmannFreunde\ContaoGridBundle\EventListener\DataContainer\ContentOnLoadCallbackListener: ~
   ErdmannFreunde\ContaoGridBundle\EventListener\DataContainer\GridClassesOptionsListener:
     arguments: [ '@ErdmannFreunde\ContaoGridBundle\GridClasses' ]
   ErdmannFreunde\ContaoGridBundle\EventListener\DataContainer\GridColsOptionsListener:
     arguments: [ '@ErdmannFreunde\ContaoGridBundle\GridClasses' ]
-  ErdmannFreunde\ContaoGridBundle\EventListener\DataContainer\LayoutGridCssDeprecationListener: ~
+  ErdmannFreunde\ContaoGridBundle\EventListener\DataContainer\GridChildDefaultsListener:
+    arguments: [ '@ErdmannFreunde\ContaoGridBundle\Grid\GridWriter' ]
+  ErdmannFreunde\ContaoGridBundle\EventListener\DataContainer\GridEditorSubmitListener:
+    arguments:
+      - '@ErdmannFreunde\ContaoGridBundle\Grid\GridWriter'
+      - '@ErdmannFreunde\ContaoGridBundle\GridClasses'
+  ErdmannFreunde\ContaoGridBundle\EventListener\DataContainer\GridListViewListener:
+    arguments:
+      - '@ErdmannFreunde\ContaoGridBundle\Grid\SpanParser'
+      - '@ErdmannFreunde\ContaoGridBundle\GridClasses'
   ErdmannFreunde\ContaoGridBundle\EventListener\DataContainer\RegisterFieldsInPaletteListener:
   ErdmannFreunde\ContaoGridBundle\EventListener\DataContainer\TranslatedLabelsListener: ~
 
   ErdmannFreunde\ContaoGridBundle\EventListener\AddGridClassesToContentListener:
     arguments: [ '@request_stack', '@contao.routing.scope_matcher' ]
   ErdmannFreunde\ContaoGridBundle\EventListener\AddGridClassesToFormListener: ~
-  ErdmannFreunde\ContaoGridBundle\EventListener\IncludeCssListener: ~
+
+  ErdmannFreunde\ContaoGridBundle\Security\Voter\GridNestingVoter:
+    arguments: [ '@database_connection' ]
 
   ErdmannFreunde\ContaoGridBundle\Migration\TstampMigration:
     arguments: [ '@database_connection' ]

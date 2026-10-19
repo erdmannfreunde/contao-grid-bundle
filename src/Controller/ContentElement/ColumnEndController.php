@@ -20,7 +20,7 @@ use Contao\CoreBundle\Twig\FragmentTemplate;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-#[AsContentElement('colEnd', category: 'euf_grid')]
+#[AsContentElement('colEnd', category: 'legacy')]
 class ColumnEndController extends AbstractContentElementController
 {
     protected function getResponse(FragmentTemplate $template, ContentModel $model, Request $request): Response

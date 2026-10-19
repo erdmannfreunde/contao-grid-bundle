@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.1">
+  <file datatype="php" original="contao/languages/en/default.php" source-language="en">
+    <body>
+      <trans-unit id="CTE.euf_grid">
+        <source>E&amp;F Grid</source>
+      </trans-unit>
+      <trans-unit id="CTE.grid.0">
+        <source>Grid</source>
+      </trans-unit>
+      <trans-unit id="CTE.grid.1">
+        <source>Arranges nested elements in a grid.</source>
+      </trans-unit>
+      <trans-unit id="CTE.grid_cell.0">
+        <source>Column</source>
+      </trans-unit>
+      <trans-unit id="CTE.grid_cell.1">
+        <source>Holds several elements in one grid column.</source>
+      </trans-unit>
+      <trans-unit id="CTE.rowStart.0">
+        <source>Row start</source>
+      </trans-unit>
+      <trans-unit id="CTE.rowEnd.0">
+        <source>Row end</source>
+      </trans-unit>
+      <trans-unit id="CTE.colStart.0">
+        <source>Column start</source>
+      </trans-unit>
+      <trans-unit id="CTE.colEnd.0">
+        <source>Column end</source>
+      </trans-unit>
+      <trans-unit id="FFL.rowStart.0">
+        <source>Row start</source>
+      </trans-unit>
+      <trans-unit id="FFL.rowEnd.0">
+        <source>Row end</source>
+      </trans-unit>
+      <trans-unit id="FFL.colStart.0">
+        <source>Column start</source>
+      </trans-unit>
+      <trans-unit id="FFL.colEnd.0">
+        <source>Column end</source>
+      </trans-unit>
+      <trans-unit id="MSC.grid_columns.col">
+        <source>Default</source>
+      </trans-unit>
+      <trans-unit id="MSC.grid_columns.col-1">
+        <source>1/12 column</source>
+      </trans-unit>
+      <trans-unit id="MSC.grid_columns.col-2">
+        <source>2/12 column</source>
+      </trans-unit>
+      <trans-unit id="MSC.grid_columns.col-3">
+        <source>3/12 column</source>
+      </trans-unit>
+      <trans-unit id="MSC.grid_columns.col-4">
+        <source>4/12 column</source>
+      </trans-unit>
+      <trans-unit id="MSC.grid_columns.col-5">
+        <source>5/12 column</source>
+      </trans-unit>
+      <trans-unit id="MSC.grid_columns.col-6">
+        <source>6/12 column</source>
+      </trans-unit>
+      <trans-unit id="MSC.grid_columns.col-7">
+        <source>7/12 column</source>
+      </trans-unit>
+      <trans-unit id="MSC.grid_columns.col-8">
+        <source>8/12 column</source>
+      </trans-unit>
+      <trans-unit id="MSC.grid_columns.col-9">
+        <source>9/12 column</source>
+      </trans-unit>
+      <trans-unit id="MSC.grid_columns.col-10">
+        <source>10/12 column</source>
+      </trans-unit>
+      <trans-unit id="MSC.grid_columns.col-11">
+        <source>11/12 column</source>
+      </trans-unit>
+      <trans-unit id="MSC.grid_columns.col-12">
+        <source>12/12 column</source>
+      </trans-unit>
+      <trans-unit id="MSC.grid_columns.col-md">
+        <source>Medium screen</source>
+      </trans-unit>
+      <trans-unit id="MSC.grid_columns.col-md-1">
+        <source>1/12 column (medium screen)</source>
+      </trans-unit>
+      <trans-unit id="MSC.grid_columns.col-md-2">
+        <source>2/12 column (medium screen)</source>
+      </trans-unit>
+      <trans-unit id="MSC.grid_columns.col-md-3">
+        <source>3/12 column (medium screen)</source>
+      </trans-unit>
+      <trans-unit id="MSC.grid_columns.col-md-4">
+        <source>4/12 column (medium screen)</source>
+      </trans-unit>
+      <trans-unit id="MSC.grid_columns.col-md-5">
+        <source>5/12 column (medium screen)</source>
+      </trans-unit>
+      <trans-unit id="MSC.grid_columns.col-md-6">
+        <source>6/12 column (medium screen)</source>
+      </trans-unit>
+      <trans-unit id="MSC.grid_columns.col-md-7">
+        <source>7/12 column (medium screen)</source>
+      </trans-unit>
+      <trans-unit id="MSC.grid_columns.col-md-8">
+        <source>8/12 column (medium screen)</source>
+      </trans-unit>
+      <trans-unit id="MSC.grid_columns.col-md-9">
+        <source>9/12 column (medium screen)</source>
+      </trans-unit>
+      <trans-unit id="MSC.grid_columns.col-md-10">
+        <source>10/12 column (medium screen)</source>
+      </trans-unit>
+      <trans-unit id="MSC.grid_columns.col-md-11">
+        <source>11/12 column (medium screen)</source>
+      </trans-unit>
+      <trans-unit id="MSC.grid_columns.col-md-12">
+        <source>12/12 column (medium screen)</source>
+      </trans-unit>
+      <trans-unit id="eufGrid.view">
+        <source>View</source>
+      </trans-unit>
+      <trans-unit id="eufGrid.pattern">
+        <source>Pattern</source>
+      </trans-unit>
+      <trans-unit id="eufGrid.patternStacked">
+        <source>stacked</source>
+      </trans-unit>
+      <trans-unit id="eufGrid.patternEqual">
+        <source>%s equal</source>
+      </trans-unit>
+      <trans-unit id="eufGrid.patternFree">
+        <source>free</source>
+      </trans-unit>
+      <trans-unit id="eufGrid.width">
+        <source>Width</source>
+      </trans-unit>
+      <trans-unit id="eufGrid.height">
+        <source>Height</source>
+      </trans-unit>
+      <trans-unit id="eufGrid.colStart">
+        <source>Start column</source>
+      </trans-unit>
+      <trans-unit id="eufGrid.rowStart">
+        <source>Start row</source>
+      </trans-unit>
+      <trans-unit id="eufGrid.auto">
+        <source>auto</source>
+      </trans-unit>
+      <trans-unit id="eufGrid.autoHint">
+        <source>0 = automatic</source>
+      </trans-unit>
+      <trans-unit id="eufGrid.default">
+        <source>Default</source>
+      </trans-unit>
+      <trans-unit id="eufGrid.close">
+        <source>Close</source>
+      </trans-unit>
+      <trans-unit id="eufGrid.closeMenu">
+        <source>Close menu</source>
+      </trans-unit>
+      <trans-unit id="eufGrid.openMenu">
+        <source>Open all values of %s</source>
+      </trans-unit>
+      <trans-unit id="eufGrid.decrease">
+        <source>Decrease %s of %s</source>
+      </trans-unit>
+      <trans-unit id="eufGrid.increase">
+        <source>Increase %s of %s</source>
+      </trans-unit>
+      <trans-unit id="eufGrid.menuFree">
+        <source>View %s — these values apply from here upwards.</source>
+      </trans-unit>
+      <trans-unit id="eufGrid.menuPattern">
+        <source>View %s follows a pattern, the measurements belong to the grid.</source>
+      </trans-unit>
+      <trans-unit id="eufGrid.replaceOne">
+        <source>One cell has its own values for this view. The pattern replaces them. Continue?</source>
+      </trans-unit>
+      <trans-unit id="eufGrid.replaceMany">
+        <source>%s cells have their own values for this view. The pattern replaces them. Continue?</source>
+      </trans-unit>
+      <trans-unit id="eufGrid.summaryInherited">
+        <source>Nothing is set for this view — what applies one step below applies here.</source>
+      </trans-unit>
+      <trans-unit id="eufGrid.rowOne">
+        <source>one row</source>
+      </trans-unit>
+      <trans-unit id="eufGrid.rowMany">
+        <source>%s rows</source>
+      </trans-unit>
+      <trans-unit id="eufGrid.summaryStacked">
+        <source>Stacked · %s</source>
+      </trans-unit>
+      <trans-unit id="eufGrid.summaryEqual">
+        <source>%s equal · each element %s of %s · %s</source>
+      </trans-unit>
+      <trans-unit id="eufGrid.summaryFull">
+        <source>%s, fully used</source>
+      </trans-unit>
+      <trans-unit id="eufGrid.summaryFree">
+        <source>%s · %s of %s columns free</source>
+      </trans-unit>
+      <trans-unit id="eufGrid.summaryFreeLast">
+        <source>%s · %s of %s columns free in the last one</source>
+      </trans-unit>
+      <trans-unit id="eufGrid.position.align">
+        <source>Vertical</source>
+      </trans-unit>
+      <trans-unit id="eufGrid.position.justify">
+        <source>Horizontal</source>
+      </trans-unit>
+      <trans-unit id="eufGrid.direction.start">
+        <source>Start</source>
+      </trans-unit>
+      <trans-unit id="eufGrid.direction.center">
+        <source>Center</source>
+      </trans-unit>
+      <trans-unit id="eufGrid.direction.end">
+        <source>End</source>
+      </trans-unit>
+      <trans-unit id="eufGrid.direction.stretch">
+        <source>Fill</source>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

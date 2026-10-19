@@ -1,0 +1,6 @@
+# Labels for the viewports in the grid editor. The widths behind them are the
+# theme's business, so the key is what we show; override these in the project's
+# own translations/grid.en.yaml to be more specific.
+viewport:
+    default: 'from screen %viewport%'
+    xs: 'Base'

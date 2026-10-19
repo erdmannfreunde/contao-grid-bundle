@@ -1,0 +1,10 @@
+{% extends '@Contao/content_element/_base.html.twig' %}
+
+{# Die Spalte erzeugt keine eigene DOM-Ebene: das Zell-div kommt vom Grid. #}
+{% block wrapper %}
+    {% if as_editor_view %}
+        <div class="euf-grid-cell-note">{{ nested_fragments|length }} Elemente</div>
+    {% else %}
+        {% for fragment in nested_fragments %}{{ content_element(fragment) }}{% endfor %}
+    {% endif %}
+{% endblock %}

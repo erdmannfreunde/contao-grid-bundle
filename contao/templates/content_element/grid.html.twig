@@ -1,0 +1,20 @@
+{% extends '@Contao/content_element/_base.html.twig' %}
+
+{% block content %}
+    {% if as_editor_view %}
+        {# Die Klassen wirken nur im Frontend, hier stehen die Spannweiten als Zahlen #}
+        <div class="euf-grid-schema" style="--euf-grid-columns:{{ columns }}">
+            {% for cell in cells %}
+                <div class="euf-grid-schema__cell" style="grid-column:{{ cell.span.start > 0 ? cell.span.start ~ ' / span ' ~ cell.span.col : 'span ' ~ cell.span.col }};grid-row:span {{ cell.span.row }}">
+                    <span class="euf-grid-schema__type">{{ cell.type }}</span>
+                    {% if cell.headline %}<span class="euf-grid-schema__label">{{ cell.headline }}</span>{% endif %}
+                    <span class="euf-grid-schema__span">{{ cell.span.col }}/{{ columns }}{% if cell.span.row > 1 %} · {{ cell.span.row }}×{% endif %}</span>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        {% for cell in cells %}
+            <div class="{{ cell.classes }}">{{ content_element(cell.reference) }}</div>
+        {% endfor %}
+    {% endif %}
+{% endblock %}

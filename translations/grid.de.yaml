@@ -1,0 +1,9 @@
+# Beschriftung der Ansichten im Raster-Editor.
+#
+# Welche Breite hinter einem Viewport steckt, entscheidet das Theme — die
+# Extension kennt sie nicht. Deshalb steht hier das Kürzel, und wer es genauer
+# haben will, legt im Projekt eine translations/grid.de.yaml an und überschreibt
+# die Schlüssel, etwa mit "ab 768 px" oder "Tablet".
+viewport:
+    default: 'ab Screen %viewport%'
+    xs: 'Basis'

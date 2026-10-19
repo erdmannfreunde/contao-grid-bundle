@@ -20,6 +20,12 @@ final class RegisterFieldsInPaletteListener
     public function onLoadContentCallback(): void
     {
         foreach ($GLOBALS['TL_DCA']['tl_content']['palettes'] as $k => $palette) {
+            // Das Grid bedient seine Kinder über den Raster-Editor, die Zelle
+            // trägt die Felder in ihrer eigenen Palette
+            if (\in_array($k, ['grid', 'grid_cell'], true)) {
+                continue;
+            }
+
             if (!\is_array($palette) && str_contains((string) $palette, 'cssID')) {
                 $GLOBALS['TL_DCA']['tl_content']['palettes'][$k] = str_replace(
                     '{invisible_legend',

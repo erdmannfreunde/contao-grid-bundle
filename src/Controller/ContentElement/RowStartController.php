@@ -23,7 +23,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Twig\Markup;
 
-#[AsContentElement('rowStart', category: 'euf_grid')]
+#[AsContentElement('rowStart', category: 'legacy')]
 class RowStartController extends AbstractContentElementController
 {
     public function __construct(private readonly GridClasses $gridClasses)
