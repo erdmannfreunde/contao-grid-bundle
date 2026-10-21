@@ -26,8 +26,34 @@
         wurzel.dataset.eufGridReady = '1';
 
         var config = JSON.parse(wurzel.dataset.eufGridConfig);
+
+        // Der Editor öffnet dort, wo dieses Grid zuerst etwas zu sagen hat:
+        // bei der kleinsten Ansicht mit eigenem Muster oder eigenen Werten.
+        // Ist nichts gesetzt, bleibt es bei der Basis.
+        function ersteAnsicht() {
+            for (var i = 0; i < config.viewports.length; i++) {
+                var viewport = config.viewports[i].key;
+
+                if ((config.pattern || {})[viewport]) {
+                    return viewport;
+                }
+
+                var belegt = config.cells.some(function (zelle) {
+                    return ACHSEN.some(function (achse) {
+                        return (zelle[achse] || {})[viewport] !== undefined;
+                    });
+                });
+
+                if (belegt) {
+                    return viewport;
+                }
+            }
+
+            return config.viewports.length ? config.viewports[0].key : 'md';
+        }
+
         var zustand = {
-            viewport: config.viewports.length ? config.viewports[Math.min(2, config.viewports.length - 1)].key : 'md',
+            viewport: ersteAnsicht(),
             pattern: Object.assign({}, config.pattern || {}),
             cells: {}
         };
