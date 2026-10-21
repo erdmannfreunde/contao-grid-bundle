@@ -76,6 +76,27 @@ erdmannfreunde_contao_grid:
 
 **Ein Grid in einem Grid setzt seine eigene Breite nicht selbst.** Beim Elementtyp *Grid* fehlen die Felder *Grid Columns* und *Grid Optionen* mit Absicht: Im Formular stünden sonst zwei Raster nebeneinander — der Raster-Editor für die Kinder und die Klassen für das Element selbst — und es wäre kaum zu erkennen, welches gerade gemeint ist. Die Breite eines verschachtelten Grids setzt du deshalb im Raster-Editor des übergeordneten Grids, genau wie bei jedem anderen Kind.
 
+## Andere Spaltenzahl als zwölf
+
+Zehn, sechzehn oder eine andere Zahl geht — die Spaltenzahl steht in `columns`:
+
+```yml
+erdmannfreunde_contao_grid:
+  columns: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+  options_columns: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+```
+
+Der Raster-Editor richtet sich automatisch danach: Er zeichnet so viele Spuren, schreibt `col-md-5` statt `col-md-6` für die halbe Breite und bietet nur Aufteilungen an, die glatt aufgehen und jedem Element mindestens zwei Spuren lassen. Bei zehn Spalten sind das „2 gleich" und „5 gleich", bei neun nur „3 gleich", bei einer Primzahl wie sieben gar keine.
+
+**Dein Theme muss dieselbe Zahl kennen.** Die Extension erzeugt nur die Klassen, das Raster kommt aus dem CSS. Bei Nutshell sind dafür zwei Stellen zuständig:
+
+```scss
+$grid-columns: 10;        // erzeugt die Klassen col-*-1 bis col-*-10
+--grid-columns: 10;       // bestimmt die Spuren des Rasters
+```
+
+Stimmen die Zahlen nicht überein, entstehen Klassen ohne CSS oder Spannweiten, die über das Raster hinausreichen — letztere erzeugen stillschweigend zusätzliche Spalten.
+
 ## Wie viele Elemente nebeneinander?
 
 Ein zwölfspaltiges Raster ist auf einem Telefon wenig wert — dort sind ein oder zwei Elemente nebeneinander sinnvoll, mehr nicht. Über `max_per_row` legst du je Ansicht fest, wie viele es höchstens sein dürfen:

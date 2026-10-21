@@ -84,7 +84,12 @@ final readonly class GridEditorData
     }
 
     /**
-     * Nur Aufteilungen, die in der Spaltenzahl glatt aufgehen.
+     * Nur Aufteilungen, die in der Spaltenzahl glatt aufgehen und jedem Element
+     * noch mindestens zwei Spuren lassen.
+     *
+     * Die Grenze wächst damit mit dem Raster: zwölf Spalten ergeben 1, 2, 3, 4
+     * und 6, sechzehn zusätzlich 8. Eine Aufteilung, bei der jedes Element nur
+     * eine Spur breit wäre, ist keine Aufteilung mehr.
      *
      * @return array<string>
      */
@@ -93,7 +98,7 @@ final readonly class GridEditorData
         $spalten = \count($this->gridClasses->getColumns());
         $muster = [];
 
-        for ($n = 1; $n <= min(6, $spalten); ++$n) {
+        for ($n = 1; $n <= max(1, intdiv($spalten, 2)); ++$n) {
             if (0 === $spalten % $n) {
                 $muster[] = (string) $n;
             }

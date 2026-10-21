@@ -35,6 +35,18 @@ class GridEditorDataTest extends TestCase
         $this->assertSame(['1', '2', '5', 'frei'], $zehn->patterns());
     }
 
+    public function testTheListGrowsWithTheGrid(): void
+    {
+        $this->assertSame(['1', '2', '4', '8', 'frei'], $this->editorData(range(1, 16))->patterns(), 'sechzehn Spalten lassen acht Elemente zu je zwei Spuren zu');
+    }
+
+    public function testLeavesOutWhatWouldBeOneTrackEach(): void
+    {
+        $muster = $this->editorData()->patterns();
+
+        $this->assertNotContains('12', $muster, 'zwölf Elemente in zwölf Spalten sind keine Aufteilung');
+    }
+
     public function testAlwaysOffersTheWayOut(): void
     {
         $sieben = $this->editorData(range(1, 7));
