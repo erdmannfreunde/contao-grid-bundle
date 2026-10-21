@@ -20,10 +20,11 @@ use ErdmannFreunde\ContaoGridBundle\GridClasses;
 trait GridClassesFixture
 {
     /**
-     * @param array<string>|null $viewports
-     * @param array<int>|null    $columns
+     * @param array<string>|null    $viewports
+     * @param array<int>|null       $columns
+     * @param array<string, int>    $maxPerRow
      */
-    private function gridClasses(array|null $viewports = null, array|null $columns = null): GridClasses
+    private function gridClasses(array|null $viewports = null, array|null $columns = null, array $maxPerRow = []): GridClasses
     {
         return new GridClasses(
             'row',
@@ -37,6 +38,7 @@ trait GridClassesFixture
             ['align', 'justify'],
             ['start', 'center', 'end', 'stretch'],
             range(1, 12),
+            $maxPerRow,
         );
     }
 }

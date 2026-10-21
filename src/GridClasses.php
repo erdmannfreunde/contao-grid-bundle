@@ -50,7 +50,21 @@ final readonly class GridClasses
          * @var array<int>
          */
         private array $options_columns,
+        /**
+         * @var array<string, int>
+         */
+        private array $max_per_row = [],
     ) {
+    }
+
+    /**
+     * Wie viele Elemente in einer Ansicht höchstens nebeneinander stehen.
+     *
+     * @return array<string, int>
+     */
+    public function getMaxPerRow(): array
+    {
+        return $this->max_per_row;
     }
 
     public function getRowClass(): string

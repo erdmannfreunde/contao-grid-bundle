@@ -53,6 +53,10 @@ erdmannfreunde_contao_grid:
     - center
     - end
     - stretch
+  max_per_row:
+    xs: 2
+    sm: 2
+    md: 4
   options_columns:
     - 1
     - 2
@@ -71,6 +75,22 @@ erdmannfreunde_contao_grid:
 ## Bekannte Einschränkungen
 
 **Ein Grid in einem Grid setzt seine eigene Breite nicht selbst.** Beim Elementtyp *Grid* fehlen die Felder *Grid Columns* und *Grid Optionen* mit Absicht: Im Formular stünden sonst zwei Raster nebeneinander — der Raster-Editor für die Kinder und die Klassen für das Element selbst — und es wäre kaum zu erkennen, welches gerade gemeint ist. Die Breite eines verschachtelten Grids setzt du deshalb im Raster-Editor des übergeordneten Grids, genau wie bei jedem anderen Kind.
+
+## Wie viele Elemente nebeneinander?
+
+Ein zwölfspaltiges Raster ist auf einem Telefon wenig wert — dort sind ein oder zwei Elemente nebeneinander sinnvoll, mehr nicht. Über `max_per_row` legst du je Ansicht fest, wie viele es höchstens sein dürfen:
+
+```yml
+erdmannfreunde_contao_grid:
+  max_per_row:
+    xs: 2
+    sm: 2
+    md: 4
+```
+
+Im Raster-Editor erscheinen dann für diese Ansichten nur die passenden Muster, und im freien Modus lässt sich keine Breite unterhalb des entsprechenden Anteils mehr einstellen — bei zwölf Spalten und zwei Elementen also nichts unter 6/12. Ansichten, die hier nicht genannt sind, bleiben unbegrenzt.
+
+Die Grenze wirkt im Editor, nicht beim Speichern: Bestehende Werte bleiben erhalten, und ein bereits gesetztes Muster bleibt sichtbar und wählbar, auch wenn es über der Grenze liegt.
 
 ## Beschriftung der Ansichten
 

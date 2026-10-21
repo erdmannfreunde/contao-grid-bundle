@@ -96,6 +96,15 @@
             return wert;
         }
 
+        // Was in dieser Ansicht höchstens nebeneinander stehen darf
+        function ansicht(viewport) {
+            var treffer = config.viewports.filter(function (eintrag) {
+                return eintrag.key === (viewport || zustand.viewport);
+            });
+
+            return treffer.length ? treffer[0] : {};
+        }
+
         function standard(achse) {
             return 'col' === achse ? config.columns : ('rowSpan' === achse ? 1 : 0);
         }
@@ -106,7 +115,7 @@
             }
 
             if ('col' === achse) {
-                return [1, config.columns];
+                return [ansicht().minWidth || 1, config.columns];
             }
 
             // Startspalte und Startzeile kennen "auto": ohne Wert gilt, was eine
@@ -255,7 +264,16 @@
             muster.appendChild(beschriftung(t('pattern')));
             var aktiv = musterFuer(zustand.viewport);
 
+            var hoechstens = ansicht().maxPerRow;
+
             config.patterns.forEach(function (wert) {
+                // Ein Muster, das mehr Elemente nebeneinander stellt, als diese
+                // Ansicht verträgt, steht nicht zur Wahl — es sei denn, es ist
+                // bereits gesetzt: Was gespeichert ist, muss sichtbar bleiben
+                if (hoechstens && 'frei' !== wert && wert !== aktiv && parseInt(wert, 10) > hoechstens) {
+                    return;
+                }
+
                 var knopf = document.createElement('button');
                 knopf.type = 'button';
                 knopf.className = 'euf-grid-editor__pattern';

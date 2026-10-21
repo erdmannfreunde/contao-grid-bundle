@@ -29,6 +29,12 @@ Es trägt nur noch `content-grid` und was du ihm selbst gibst. Dein Theme muss d
 
 Statt `row-span-{viewport}-{n}`. Bestehende `row-span`-Klassen werden nicht mehr gelesen. Eine Umwandlung gibt es nicht, weil Version 3 ohnehin voraussetzt, dass die Bereiche neu angelegt werden. Nutshell unterstützt ab 2.0.18 beide Schreibweisen, damit Bestände im Frontend unverändert aussehen.
 
+### Kleine Ansichten sind im Editor begrenzt
+
+Neu ist `max_per_row`. Standardmäßig lässt der Raster-Editor in der Basis und der kleinen Ansicht höchstens zwei Elemente nebeneinander zu, in der mittleren vier; ab der großen Ansicht ist alles offen. Wer das anders braucht, setzt eigene Werte oder hebt die Grenze mit einem leeren `max_per_row` auf.
+
+Gespeicherte Werte bleiben unangetastet — die Grenze wirkt nur darauf, was der Editor anbietet. Ein bestehendes Muster über der Grenze bleibt sichtbar und bedienbar, bis jemand es verlässt.
+
 ### Die Option `translated_labels` ist entfallen
 
 Sie konnte in den beiden Expertenfeldern „Grid Columns" und „Grid Optionen" statt des Klassennamens einen Text anzeigen, etwa „6/12 Spalte (Medium Screen)". Diese Texte waren fest in den Sprachdateien hinterlegt, deckten nur einen Teil der Klassen ab (`col-*` und `col-md-*`, für die Optionsklassen gab es gar keine) und wurden falsch, sobald ein Projekt mit einer anderen Spaltenzahl als zwölf arbeitete.

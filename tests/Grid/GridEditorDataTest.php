@@ -46,7 +46,24 @@ class GridEditorDataTest extends TestCase
     {
         $viewports = $this->editorData()->build(0, 'feld')['viewports'];
 
-        $this->assertSame(['key' => 'md', 'label' => 'ab Screen MD'], $viewports[2]);
+        $this->assertSame('md', $viewports[2]['key']);
+        $this->assertSame('ab Screen MD', $viewports[2]['label']);
+    }
+
+    public function testAViewportWithoutALimitStaysOpen(): void
+    {
+        $viewports = $this->editorData()->build(0, 'feld')['viewports'];
+
+        $this->assertNull($viewports[2]['maxPerRow']);
+        $this->assertSame(1, $viewports[2]['minWidth'], 'ohne Grenze ist jede Breite erlaubt');
+    }
+
+    public function testALimitBecomesTheNarrowestWidth(): void
+    {
+        $daten = $this->editorData(null, [], ['xs' => 2, 'md' => 4])->build(0, 'feld');
+
+        $this->assertSame([2, 6], [$daten['viewports'][0]['maxPerRow'], $daten['viewports'][0]['minWidth']], 'zwei nebeneinander heißt halbe Breite');
+        $this->assertSame([4, 3], [$daten['viewports'][2]['maxPerRow'], $daten['viewports'][2]['minWidth']]);
     }
 
     public function testAnOwnTranslationWins(): void
@@ -57,12 +74,13 @@ class GridEditorDataTest extends TestCase
     }
 
     /**
-     * @param array<int>|null     $columns
+     * @param array<int>|null      $columns
      * @param array<string,string> $uebersetzungen
+     * @param array<string,int>    $maxPerRow
      */
-    private function editorData(array|null $columns = null, array $uebersetzungen = []): GridEditorData
+    private function editorData(array|null $columns = null, array $uebersetzungen = [], array $maxPerRow = []): GridEditorData
     {
-        $gridClasses = $this->gridClasses(null, $columns);
+        $gridClasses = $this->gridClasses(null, $columns, $maxPerRow);
 
         $translator = new Translator('de');
         $translator->addLoader('array', new ArrayLoader());

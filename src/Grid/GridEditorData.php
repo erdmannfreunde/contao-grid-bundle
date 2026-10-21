@@ -189,8 +189,20 @@ final readonly class GridEditorData
     {
         $liste = [];
 
+        $grenzen = $this->gridClasses->getMaxPerRow();
+        $spalten = \count($this->gridClasses->getColumns());
+
         foreach ($this->gridClasses->getViewports() as $viewport) {
-            $liste[] = ['key' => $viewport, 'label' => $this->viewportLabel((string) $viewport)];
+            $hoechstens = (int) ($grenzen[$viewport] ?? 0);
+
+            $liste[] = [
+                'key' => $viewport,
+                'label' => $this->viewportLabel((string) $viewport),
+                // Null heißt: keine Grenze. Sonst die schmalste Breite, die in
+                // dieser Ansicht noch erlaubt ist
+                'maxPerRow' => $hoechstens > 0 ? $hoechstens : null,
+                'minWidth' => $hoechstens > 0 ? (int) ceil($spalten / $hoechstens) : 1,
+            ];
         }
 
         return $liste;
