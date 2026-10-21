@@ -447,14 +447,16 @@
                 kasten.appendChild(zahl);
             }
 
-            // Was gespeichert wird, steht in der Zelle — kein Rätselraten
+            // Was gespeichert wird, steht in der Zelle — kein Rätselraten.
+            // Weicht es vom gespeicherten Stand ab, sagt ein Punkt das dazu.
             var liste = klassenliste(zelle);
+            var geaendert = liste.join(' ') !== klassenliste(zelle, zelle, config.pattern).join(' ');
 
             if (liste.length && breite >= MIN_BEDIENBAR) {
                 var klassen = document.createElement('div');
-                klassen.className = 'euf-grid-editor__classes';
-                klassen.textContent = liste.join(' ');
-                klassen.title = liste.join(' ');
+                klassen.className = 'euf-grid-editor__classes' + (geaendert ? ' euf-grid-editor__classes--offen' : '');
+                klassen.textContent = (geaendert ? '• ' : '') + liste.join(' ');
+                klassen.title = liste.join(' ') + (geaendert ? ' — noch nicht gespeichert' : '');
                 kasten.appendChild(klassen);
             }
 
@@ -498,13 +500,14 @@
          *
          * @return array<string>
          */
-        function klassenliste(zelle) {
-            var werte = zustand.cells[zelle.id];
+        function klassenliste(zelle, quelle, musterQuelle) {
+            var werte = quelle || zustand.cells[zelle.id];
+            var muster_ = musterQuelle || zustand.pattern;
             var liste = [];
 
             config.viewports.forEach(function (viewport) {
                 var vp = viewport.key;
-                var muster = zustand.pattern[vp];
+                var muster = muster_[vp];
 
                 if (muster && 'frei' !== muster) {
                     liste.push('col-' + vp + '-' + Math.floor(config.columns / parseInt(muster, 10)));
@@ -512,25 +515,25 @@
                     return;
                 }
 
-                if (werte.col[vp] !== undefined) {
+                if ((werte.col || {})[vp] !== undefined) {
                     liste.push('col-' + vp + '-' + werte.col[vp]);
                 }
 
-                if (werte.rowSpan[vp] > 1) {
+                if ((werte.rowSpan || {})[vp] > 1) {
                     liste.push('row-' + vp + '-' + werte.rowSpan[vp]);
                 }
 
-                if (werte.colStart[vp] > 0) {
+                if ((werte.colStart || {})[vp] > 0) {
                     liste.push('col-start-' + vp + '-' + werte.colStart[vp]);
                 }
 
-                if (werte.rowStart[vp] > 0) {
+                if ((werte.rowStart || {})[vp] > 0) {
                     liste.push('row-start-' + vp + '-' + werte.rowStart[vp]);
                 }
             });
 
             config.positioning.forEach(function (position) {
-                if (werte.alignment[position.key]) {
+                if ((werte.alignment || {})[position.key]) {
                     liste.push(position.key + '-' + werte.alignment[position.key]);
                 }
             });

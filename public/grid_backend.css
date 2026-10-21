@@ -213,6 +213,12 @@ html[data-color-scheme=dark] {
     text-overflow: ellipsis;
 }
 
+/* Noch nicht gespeichert: der Punkt sagt es, die Farbe unterstreicht es */
+.euf-grid-editor__classes--offen {
+    color: var(--text, #222);
+    font-weight: 600;
+}
+
 .euf-grid-editor__cell-label {
     font-size: .75rem;
     color: var(--info, #747476);
