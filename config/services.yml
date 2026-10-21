@@ -56,7 +56,6 @@ services:
       - '@ErdmannFreunde\ContaoGridBundle\Grid\SpanParser'
       - '@ErdmannFreunde\ContaoGridBundle\GridClasses'
   ErdmannFreunde\ContaoGridBundle\EventListener\DataContainer\RegisterFieldsInPaletteListener:
-  ErdmannFreunde\ContaoGridBundle\EventListener\DataContainer\TranslatedLabelsListener: ~
 
   ErdmannFreunde\ContaoGridBundle\EventListener\AddGridClassesToContentListener:
     arguments: [ '@request_stack', '@contao.routing.scope_matcher' ]

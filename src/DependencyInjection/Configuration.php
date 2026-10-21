@@ -23,9 +23,6 @@ final class Configuration implements ConfigurationInterface
         $rootNode = $treeBuilder->getRootNode();
         $rootNode
             ->children()
-                ->booleanNode('translated_labels')
-                    ->defaultFalse()
-                ->end()
                 ->scalarNode('row_class')
                     ->defaultValue('row')
                 ->end()
