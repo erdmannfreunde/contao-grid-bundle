@@ -34,8 +34,15 @@ final readonly class AddGridClassesToContentListener
         // Bei diesen ContentElementen soll nichts verändert werden
         $arrWrongCE = ['rowStart', 'rowEnd', 'colEnd'];
 
-        // Kinder eines Grids bekommen ihr Zell-div vom Grid-Template, nicht von hier
+        // Kinder eines Grids bekommen ihr Zell-div vom Grid-Template, nicht von
+        // hier. Die Notiz mit den Klassen gehört im Backend trotzdem an die Karte.
         if ('tl_content' === $contentModel->ptable && $this->isGridChild((int) $contentModel->pid)) {
+            $klassen = $this->gridClasses($contentModel);
+
+            if ($klassen && $this->isBackend()) {
+                return '<div class="tl_grid_note">'.$klassen.'</div>'.$strBuffer;
+            }
+
             return $strBuffer;
         }
 
@@ -43,21 +50,7 @@ final readonly class AddGridClassesToContentListener
             !\in_array($contentModel->type, $arrWrongCE, true)
             && (isset($contentModel->grid_columns) || isset($contentModel->grid_options))
         ) {
-            if ($contentModel->grid_columns) {
-                $arrGridClasses = StringUtil::deserialize($contentModel->grid_columns);
-
-                foreach ($arrGridClasses as $class) {
-                    $strClasses .= $class.' ';
-                }
-            }
-
-            if ($contentModel->grid_options) {
-                $arrGridClasses = StringUtil::deserialize($contentModel->grid_options);
-
-                foreach ($arrGridClasses as $class) {
-                    $strClasses .= $class.' ';
-                }
-            }
+            $strClasses = $this->gridClasses($contentModel);
 
             switch ($contentModel->type) {
                 case 'rowStart':
@@ -75,12 +68,35 @@ final readonly class AddGridClassesToContentListener
                     break;
             }
 
-            if ($this->scopeMatcher->isBackendRequest($this->requestStack->getCurrentRequest())) {
+            if ($this->isBackend()) {
                 $strBuffer = '<div class="tl_grid_note">'.$strClasses.'</div>'.$strBuffer;
             }
         }
 
         return $strBuffer;
+    }
+
+    /**
+     * Die Klassen beider Felder, durch Leerzeichen getrennt.
+     */
+    private function gridClasses(ContentModel $contentModel): string
+    {
+        $klassen = [];
+
+        foreach (['grid_columns', 'grid_options'] as $feld) {
+            foreach (StringUtil::deserialize($contentModel->$feld, true) as $klasse) {
+                if ($klasse) {
+                    $klassen[] = (string) $klasse;
+                }
+            }
+        }
+
+        return $klassen ? implode(' ', $klassen).' ' : '';
+    }
+
+    private function isBackend(): bool
+    {
+        return $this->scopeMatcher->isBackendRequest($this->requestStack->getCurrentRequest());
     }
 
     private function isGridChild(int $pid): bool
