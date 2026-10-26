@@ -81,6 +81,19 @@ final readonly class GridWriter
             foreach ($verwaltet as $viewport) {
                 $wert = (string) $muster[$viewport];
 
+                // Ohne eigenen Wert fallen die Klassen dieser Ansicht weg,
+                // damit die Vererbung von unten wieder greift
+                if ('erbt' === $wert) {
+                    $werte[$viewport] = [
+                        'col' => null,
+                        'row' => null,
+                        'col-start' => null,
+                        'row-start' => null,
+                    ];
+
+                    continue;
+                }
+
                 if ('frei' === $wert) {
                     $eigen = $zellen[$kind->id]['viewports'][$viewport] ?? null;
 

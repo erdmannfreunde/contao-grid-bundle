@@ -25,19 +25,19 @@ class GridEditorDataTest extends TestCase
 
     public function testOffersOnlyPatternsThatDivideTheColumns(): void
     {
-        $this->assertSame(['1', '2', '3', '4', '6', 'frei'], $this->editorData()->patterns());
+        $this->assertSame(['1', '2', '3', '4', '6', 'frei', 'erbt'], $this->editorData()->patterns());
     }
 
     public function testFollowsAnotherColumnCount(): void
     {
         $zehn = $this->editorData(range(1, 10));
 
-        $this->assertSame(['1', '2', '5', 'frei'], $zehn->patterns());
+        $this->assertSame(['1', '2', '5', 'frei', 'erbt'], $zehn->patterns());
     }
 
     public function testTheListGrowsWithTheGrid(): void
     {
-        $this->assertSame(['1', '2', '4', '8', 'frei'], $this->editorData(range(1, 16))->patterns(), 'sechzehn Spalten lassen acht Elemente zu je zwei Spuren zu');
+        $this->assertSame(['1', '2', '4', '8', 'frei', 'erbt'], $this->editorData(range(1, 16))->patterns(), 'sechzehn Spalten lassen acht Elemente zu je zwei Spuren zu');
     }
 
     public function testLeavesOutWhatWouldBeOneTrackEach(): void
@@ -51,7 +51,7 @@ class GridEditorDataTest extends TestCase
     {
         $sieben = $this->editorData(range(1, 7));
 
-        $this->assertSame(['1', 'frei'], $sieben->patterns(), 'eine Primzahl lässt nur eine Aufteilung zu');
+        $this->assertSame(['1', 'frei', 'erbt'], $sieben->patterns(), 'eine Primzahl lässt nur eine Aufteilung zu');
     }
 
     public function testLabelsAViewportAfterItsKey(): void

@@ -30,7 +30,7 @@ final readonly class GridEditorData
      * Konfiguration ins JavaScript — dort wird %s der Reihe nach ersetzt.
      */
     private const TEXTS = [
-        'view', 'pattern', 'patternStacked', 'patternEqual', 'patternFree',
+        'view', 'pattern', 'patternStacked', 'patternEqual', 'patternFree', 'patternInherit',
         'width', 'height', 'colStart', 'rowStart', 'auto', 'autoHint',
         'default', 'close', 'closeMenu', 'openMenu', 'decrease', 'increase',
         'menuFree', 'menuPattern', 'replaceOne', 'replaceMany',
@@ -105,6 +105,10 @@ final readonly class GridEditorData
         }
 
         $muster[] = 'frei';
+
+        // Kein eigener Wert: Was eine Stufe darunter gilt, gilt auch hier.
+        // Der Editor bietet das erst ab der zweiten Ansicht an.
+        $muster[] = 'erbt';
 
         return $muster;
     }

@@ -57,6 +57,10 @@ final readonly class ClassFormatter
             }
         }
 
+        $viewports = $this->gridClasses->getViewports();
+        $unterste = (string) ($viewports[0] ?? '');
+        $spalten = \count($this->gridClasses->getColumns());
+
         foreach ($werte as $viewport => $achsen) {
             foreach ($praefixe as $praefix) {
                 $wert = $achsen[$praefix] ?? null;
@@ -64,6 +68,12 @@ final readonly class ClassFormatter
                 // Die Standardwerte brauchen keine Klasse: eine Zeile hoch,
                 // kein eigener Startpunkt
                 if (null === $wert || ('row' === $praefix && $wert < 2)) {
+                    continue;
+                }
+
+                // In der untersten Ansicht ist die volle Breite der Normalfall
+                // und braucht keine Klasse
+                if ('col' === $praefix && $viewport === $unterste && $wert >= $spalten) {
                     continue;
                 }
 

@@ -70,6 +70,10 @@
         <source>%s equal</source>
         <target>%s gleich</target>
       </trans-unit>
+      <trans-unit id="eufGrid.patternInherit">
+        <source>inherited</source>
+        <target>erbt</target>
+      </trans-unit>
       <trans-unit id="eufGrid.patternFree">
         <source>free</source>
         <target>frei</target>

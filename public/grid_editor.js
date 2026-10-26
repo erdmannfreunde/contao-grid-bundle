@@ -110,7 +110,10 @@
             for (var i = 0; i < config.viewports.length; i++) {
                 var v = config.viewports[i].key;
 
-                if (zustand.pattern[v]) {
+                if ('erbt' === zustand.pattern[v]) {
+                    // Diese Ansicht sagt ausdrücklich nichts Eigenes
+                    wert = '';
+                } else if (zustand.pattern[v]) {
                     wert = zustand.pattern[v];
                 }
 
@@ -289,10 +292,22 @@
             muster.className = 'euf-grid-editor__tabs';
             muster.appendChild(beschriftung(t('pattern')));
             var aktiv = musterFuer(zustand.viewport);
+            var eigenes = zustand.pattern[zustand.viewport] || 'erbt';
+            var ersteAnsichtIst = config.viewports.length && config.viewports[0].key === zustand.viewport;
 
             var hoechstens = ansicht().maxPerRow;
 
-            config.patterns.forEach(function (wert) {
+            var reihenfolge = config.patterns.filter(function (wert) {
+                return 'erbt' === wert;
+            }).concat(config.patterns.filter(function (wert) {
+                return 'erbt' !== wert;
+            }));
+
+            reihenfolge.forEach(function (wert) {
+                // Die unterste Ansicht hat nichts, von dem sie erben könnte
+                if ('erbt' === wert && ersteAnsichtIst) {
+                    return;
+                }
                 // Ein Muster, das mehr Elemente nebeneinander stellt, als diese
                 // Ansicht verträgt, steht nicht zur Wahl — es sei denn, es ist
                 // bereits gesetzt: Was gespeichert ist, muss sichtbar bleiben
@@ -303,8 +318,10 @@
                 var knopf = document.createElement('button');
                 knopf.type = 'button';
                 knopf.className = 'euf-grid-editor__pattern';
-                knopf.textContent = 'frei' === wert ? t('patternFree') : ('1' === wert ? t('patternStacked') : t('patternEqual', wert));
-                knopf.setAttribute('aria-pressed', wert === aktiv ? 'true' : 'false');
+                knopf.textContent = 'erbt' === wert
+                    ? t('patternInherit')
+                    : ('frei' === wert ? t('patternFree') : ('1' === wert ? t('patternStacked') : t('patternEqual', wert)));
+                knopf.setAttribute('aria-pressed', wert === eigenes ? 'true' : 'false');
                 knopf.addEventListener('click', function () {
                     musterWechseln(wert);
                 });
@@ -346,6 +363,20 @@
 
         function musterWechseln(wert) {
             if ('frei' !== wert && !ersetzenBestaetigt()) {
+                return;
+            }
+
+            if ('erbt' === wert) {
+                config.cells.forEach(function (zelle) {
+                    ACHSEN.forEach(function (achse) {
+                        delete zustand.cells[zelle.id][achse][zustand.viewport];
+                    });
+                });
+
+                delete zustand.pattern[zustand.viewport];
+                zustand.pattern[zustand.viewport] = 'erbt';
+                zeichnen();
+
                 return;
             }
 
@@ -505,17 +536,28 @@
             var muster_ = musterQuelle || zustand.pattern;
             var liste = [];
 
-            config.viewports.forEach(function (viewport) {
+            config.viewports.forEach(function (viewport, i) {
                 var vp = viewport.key;
                 var muster = muster_[vp];
 
-                if (muster && 'frei' !== muster) {
-                    liste.push('col-' + vp + '-' + Math.floor(config.columns / parseInt(muster, 10)));
+                // "frei" und "erbt" sind keine Zahlen: dort entscheiden die
+                // eigenen Werte der Zelle, beziehungsweise gar nichts
+                if (muster && 'frei' !== muster && 'erbt' !== muster) {
+                    var breite = Math.floor(config.columns / parseInt(muster, 10));
+
+                    if (!(0 === i && breite >= config.columns)) {
+                        liste.push('col-' + vp + '-' + breite);
+                    }
 
                     return;
                 }
 
-                if ((werte.col || {})[vp] !== undefined) {
+                if ('erbt' === muster) {
+                    return;
+                }
+
+                // In der untersten Ansicht braucht die volle Breite keine Klasse
+                if ((werte.col || {})[vp] !== undefined && !(0 === i && werte.col[vp] >= config.columns)) {
                     liste.push('col-' + vp + '-' + werte.col[vp]);
                 }
 

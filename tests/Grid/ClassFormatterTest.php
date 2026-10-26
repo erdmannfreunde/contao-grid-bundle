@@ -138,6 +138,27 @@ class ClassFormatterTest extends TestCase
         $this->assertSame(['align-center', 'justify-md-end'], $klassen);
     }
 
+    public function testTheLowestViewNeedsNoClassForFullWidth(): void
+    {
+        $klassen = $this->formatter()->merge([], self::WIDTHS, ['xs' => ['col' => 12]]);
+
+        $this->assertSame([], $klassen, 'ohne Angabe gilt in der untersten Ansicht ohnehin die volle Breite');
+    }
+
+    public function testEveryOtherViewStillGetsIt(): void
+    {
+        $klassen = $this->formatter()->merge([], self::WIDTHS, ['md' => ['col' => 12]]);
+
+        $this->assertSame(['col-md-12'], $klassen, 'hier muss die Vererbung ausdrücklich überschrieben werden');
+    }
+
+    public function testTheLowestViewKeepsSmallerWidths(): void
+    {
+        $klassen = $this->formatter()->merge([], self::WIDTHS, ['xs' => ['col' => 6]]);
+
+        $this->assertSame(['col-xs-6'], $klassen);
+    }
+
     public function testWritesNothingWhenItHearsNothing(): void
     {
         $klassen = $this->formatter()->merge(['col-md-4'], self::WIDTHS, []);

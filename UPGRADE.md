@@ -29,6 +29,27 @@ Es trägt nur noch `content-grid` und was du ihm selbst gibst. Dein Theme muss d
 
 Statt `row-span-{viewport}-{n}`. Bestehende `row-span`-Klassen werden nicht mehr gelesen. Eine Umwandlung gibt es nicht, weil Version 3 ohnehin voraussetzt, dass die Bereiche neu angelegt werden. Nutshell unterstützt ab 2.0.18 beide Schreibweisen, damit Bestände im Frontend unverändert aussehen.
 
+### Die unterste Ansicht bekommt keine Breitenklasse mehr
+
+Wählt man in der Basis „untereinander", entsteht künftig **keine** `col-xs-12`-Klasse — dort ist die volle Breite der Normalfall, und eine Klasse dafür ist überflüssig.
+
+**Dein Theme muss Kinder ohne Breitenklasse auf volle Breite stellen.** Sonst sind sie nur eine Spur breit. In Nutshell gehört dafür eine Regel **vor** die Klassengenerierung:
+
+```scss
+.row > *,
+.content-grid > * {
+  grid-column: 1 / -1;
+}
+```
+
+Die Reihenfolge ist wichtig: Steht die Regel dahinter, überschreibt sie bei gleicher Spezifität die `col-*`-Klassen und macht alles voll breit.
+
+### Eine Ansicht lässt sich zurücksetzen
+
+Neben den Mustern steht ab der zweiten Ansicht „erbt". Damit sagt eine Ansicht ausdrücklich nichts Eigenes, und es gilt wieder, was eine Stufe darunter gilt. Beim Speichern werden die Klassen dieser Ansicht aus den Elementen entfernt.
+
+Bisher gab es dafür keinen Weg: Jede Auswahl erzeugte eine Klasse, auch „untereinander".
+
 ### Kleine Ansichten sind im Editor begrenzt
 
 Neu ist `max_per_row`. Standardmäßig lässt der Raster-Editor in der Basis und der kleinen Ansicht höchstens zwei Elemente nebeneinander zu, in der mittleren vier; ab der großen Ansicht ist alles offen. Wer das anders braucht, setzt eigene Werte oder hebt die Grenze mit einem leeren `max_per_row` auf.

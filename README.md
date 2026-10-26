@@ -97,6 +97,19 @@ $grid-columns: 10;        // erzeugt die Klassen col-*-1 bis col-*-10
 
 Stimmen die Zahlen nicht überein, entstehen Klassen ohne CSS oder Spannweiten, die über das Raster hinausreichen — letztere erzeugen stillschweigend zusätzliche Spalten.
 
+## Was das Theme mitbringen muss
+
+Neben den `col-*`-Klassen braucht dein Theme einen Standard für Elemente **ohne** Breitenklasse — sie sollen die volle Breite einnehmen:
+
+```scss
+.row > *,
+.content-grid > * {
+  grid-column: 1 / -1;
+}
+```
+
+Die Regel gehört vor die Klassengenerierung, sonst überschreibt sie die `col-*`-Klassen. Der Editor verlässt sich darauf: In der untersten Ansicht schreibt er für die volle Breite keine Klasse, und eine Ansicht ohne eigene Werte erbt von der darunter.
+
 ## Wie viele Elemente nebeneinander?
 
 Ein zwölfspaltiges Raster ist auf einem Telefon wenig wert — dort sind ein oder zwei Elemente nebeneinander sinnvoll, mehr nicht. Über `max_per_row` legst du je Ansicht fest, wie viele es höchstens sein dürfen:

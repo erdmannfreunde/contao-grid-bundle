@@ -53,6 +53,9 @@
       <trans-unit id="eufGrid.patternEqual">
         <source>%s equal</source>
       </trans-unit>
+      <trans-unit id="eufGrid.patternInherit">
+        <source>inherited</source>
+      </trans-unit>
       <trans-unit id="eufGrid.patternFree">
         <source>free</source>
       </trans-unit>
