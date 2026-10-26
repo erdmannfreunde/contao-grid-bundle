@@ -20,7 +20,7 @@ In die `composer.json` des Projekts:
         { "type": "vcs", "url": "https://github.com/erdmannfreunde/contao-grid-bundle.git" }
     ],
     "require": {
-        "erdmannfreunde/contao-grid-bundle": "dev-3.x as 2.99.0"
+        "erdmannfreunde/contao-grid-bundle": "3.x-dev as 2.99.0"
     }
 }
 ```
@@ -35,7 +35,7 @@ vendor/bin/contao-console contao:migrate
 vendor/bin/contao-console cache:clear
 ```
 
-Über den Contao Manager geht es genauso: Paketquelle eintragen, `dev-3.x as 2.99.0` anfordern, anschließend die Datenbank aktualisieren.
+Über den Contao Manager geht es genauso: Paketquelle eintragen, `3.x-dev as 2.99.0` anfordern, anschließend die Datenbank aktualisieren.
 
 ## Vor dem ersten Test
 
