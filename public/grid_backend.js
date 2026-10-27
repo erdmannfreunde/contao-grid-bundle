@@ -10,11 +10,22 @@
 
     var BREITE = 1200;
 
-    function apply() {
-        // Nur die Datensatzliste, nicht die Operationsmenues im Kopfbereich
+    /**
+     * Die Datensatzliste, wenn sie zu einem Grid gehört.
+     *
+     * Turbo behält das Skript im Kopf, wenn man die Liste verlässt. Ohne diese
+     * Prüfung zeichnete es anschließend auch die Inhaltsliste eines Artikels
+     * als Raster. Die Spannweiten hängen nur an Karten eines Grids.
+     */
+    function gridListe() {
+        // Nur die Datensatzliste, nicht die Operationsmenüs im Kopfbereich
         var liste = document.querySelector('.tl_listing_container.parent_view > ul');
 
-        if (!liste || liste.dataset.eufGrid === '1' || !liste.querySelector(':scope > li[data-id]')) {
+        return liste && liste.querySelector(':scope > li[data-id] .euf-grid-span') ? liste : null;
+    }
+
+    function apply(liste) {
+        if (liste.dataset.eufGrid === '1') {
             return;
         }
 
@@ -80,7 +91,13 @@
     }
 
     function start() {
-        apply();
+        var liste = gridListe();
+
+        if (!liste) {
+            return;
+        }
+
+        apply(liste);
         verknuepfen();
     }
 
