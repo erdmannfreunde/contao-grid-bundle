@@ -40,7 +40,8 @@ services:
       - '@ErdmannFreunde\ContaoGridBundle\Grid\ClassFormatter'
 
   ErdmannFreunde\ContaoGridBundle\EventListener\DataContainer\Content: ~
-  ErdmannFreunde\ContaoGridBundle\EventListener\DataContainer\ContentOnLoadCallbackListener: ~
+  ErdmannFreunde\ContaoGridBundle\EventListener\DataContainer\ContentOnLoadCallbackListener:
+    arguments: [ '@contao.routing.scope_matcher' ]
   ErdmannFreunde\ContaoGridBundle\EventListener\DataContainer\GridClassesOptionsListener:
     arguments: [ '@ErdmannFreunde\ContaoGridBundle\GridClasses' ]
   ErdmannFreunde\ContaoGridBundle\EventListener\DataContainer\GridColsOptionsListener:
